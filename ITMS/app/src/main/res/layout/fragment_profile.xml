@@ -1,0 +1,138 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="system.management.information.itms.ProfileFragment"
+    android:weightSum="1">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ข้อมูลบุคคล"
+            android:textSize="30dp"
+            android:id="@+id/txt_person"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="40dp"
+            android:layout_alignParentTop="true" />
+
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageUser"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            app:srcCompat="@drawable/icon_user" />
+
+        <Button
+            android:id="@+id/btEditImage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignStart="@+id/imageUser"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="108dp"
+            android:background="@drawable/round_button"
+            android:drawableStart="@drawable/icon_camera"
+            android:paddingLeft="8dp"
+            android:textColor="#fff" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="100dp"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <Button
+                android:id="@+id/btSave"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/round_button"
+                android:drawableLeft="@drawable/icon_save"
+                android:paddingLeft="7.5dp"
+                android:textColor="#000" />
+
+            <Button
+                android:id="@+id/btEdit"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/round_button"
+                android:drawableLeft="@drawable/icon_edit"
+                android:paddingLeft="7.5dp"
+                android:textColor="#000" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <EditText
+        android:id="@+id/txtNameShow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_edittext"
+        android:enabled="false"
+        android:selectAllOnFocus="false"
+        android:singleLine="true"
+        android:text="ชื่อ-นามสกุล"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:layout_marginTop="26dp"
+        android:layout_below="@+id/imageUser"
+        android:layout_alignParentStart="true"
+        android:layout_weight="0.08" />
+
+    <EditText
+        android:id="@+id/txtPhoneShow"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="เบอร์โทรศัพท์"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:ellipsize="start"
+        android:gravity="center_horizontal"
+        android:inputType="textCapWords|textPersonName"
+        android:singleLine="true"
+        android:enabled="false"
+        android:background="@drawable/rounded_edittext"
+        android:layout_below="@+id/txtNameShow"
+        android:layout_alignParentStart="true"
+        android:layout_weight="0.05" />
+
+    <TextView
+        android:id="@+id/txtEmailShow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="อีเมลล์"
+        android:textSize="20dp"
+        android:layout_below="@+id/txtPhoneShow"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp" />
+
+
+    <Button
+        android:id="@+id/btProfile"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/txtEmailShow"
+        android:background="#FFF"
+        android:layout_marginTop="10dp"
+        android:text="ประวัติและผลงาน"
+        android:textSize="20dp" />
+
+
+</LinearLayout>

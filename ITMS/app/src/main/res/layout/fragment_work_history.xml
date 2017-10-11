@@ -1,0 +1,95 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="system.management.information.itms.WorkHistoryFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_work_history"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/textTopicWork"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ประวัติการทำงาน"
+                android:padding="5dp"
+                android:textSize="18dp"/>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editTextWork"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:enabled="false"
+            android:hint="ข้อมูลประวัติการทำงาน"
+            android:inputType="textMultiLine"
+            android:textSize="15dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_resume"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/textTopicMoreInformation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ข้อมูลเพิ่มเติม"
+                android:padding="5dp"
+                android:textSize="18dp"/>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editTextMoreInformation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:enabled="false"
+            android:hint="ข้อมูลการทำงานเฉพาะด้าน"
+            android:inputType="textMultiLine"
+            android:textSize="15dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            >
+            <Button
+                android:id="@+id/btSaveWork"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:text="บันทึก"
+                android:background="#FFFFFF"
+                android:layout_weight="2"/>
+            <Button
+                android:id="@+id/btEditWork"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:text="แก้ไข"
+                android:background="#FFFFFF"
+                android:layout_weight="2"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

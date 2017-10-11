@@ -1,0 +1,63 @@
+<resources>
+    <string name="app_name">ITMS</string>
+    <string name="name_page"></string>
+
+    <!--หน้าเข้าสู่ระบบ-->
+    <string name="login_title_user">เข้าสู่ระบบ</string>
+    <string name="password_title">รหัสผ่าน</string>
+    <string name="email_title">อีเมลล์</string>
+    <string name="button_login">ตกลง</string>
+    <string name="txt_register">มีบัญชีหรือยัง ลงทะเบียนที่นี่</string>
+
+    <!--หน้าลงทะเบียน-->
+    <string name="button_register">ตกลง</string>
+    <string name="login_error_message">อีเมลล์หรือรหัสผ่านไม่ถูกต้อง</string>
+    <string name="register_error_message">ไม่สามารถลงทะเบียนได้ กรุณาลองใหม่</string>
+    <string name="register_password_error">Password does not match</string>
+    <string name="register_success">Register Successful</string>
+    <string name="register_title">ลงทะเบียน</string>
+    <string name="title_activity_main">ITMS.</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_tab">TabActivity</string>
+    <string name="complete">บันทึกสำเร็จ</string>
+    <string name="error">บันทึกไม่สำเร็จ</string>
+    <string name="upload">บันทึก</string>
+
+
+    <string-array name="topic_array">
+        <item>เลือกหัวข้อ</item>
+        <item>ข้อความส่วนหัวรูปภาพสไลด์</item>
+        <item>รายละเอียดส่วนหัวรูปภาพสไลด์</item>
+    </string-array>
+
+    <string-array name="null_array">
+        <item>กรุณาเลือกหน้า</item>
+    </string-array>
+
+    <string-array name="page_array">
+        <item>เลือกหน้า</item>
+        <item>หน้าแรก</item>
+        <item>เกี่ยวกับสาขาวิชา</item>
+        <item>หลักสูตร</item>
+        <item>นักศึกษา</item>
+        <item>ศิษย์เก่า</item>
+    </string-array>
+
+    <string name="subscribe_to_news">SUBSCRIBE TOPIC</string>
+    <string name="unsubscribe_to_news">UNSUBSCRIBE TOPIC</string>
+    <string name="log_token">LOG TOKEN</string>
+
+    <string name="title_activity_post">PostActivity</string>
+    <string name="title_activity_bottombar_main">BottombarMainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_chat_main">ChatMainActivity</string>
+</resources>

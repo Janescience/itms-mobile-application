@@ -1,0 +1,85 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="system.management.information.itms.EducationHistoryFragment">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:layout_marginBottom="90dp"
+        android:orientation="vertical">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical">-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal">-->
+            <!--<ImageView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:src="@drawable/ic_education"-->
+                <!--android:layout_gravity="center"/>-->
+            <!--<TextView-->
+                <!--android:id="@+id/textTopicEducation"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="ประวัติการศึกษา"-->
+                <!--android:padding="5dp"-->
+                <!--android:textSize="18dp"/>-->
+        <!--</LinearLayout>-->
+
+        <!--<EditText-->
+            <!--android:id="@+id/editTextEducation"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="50dp"-->
+            <!--android:enabled="false"-->
+            <!--android:hint="ข้อมูลประวัติการศึกษา"-->
+            <!--android:inputType="textMultiLine"-->
+            <!--android:textSize="15dp" />-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal">-->
+            <!--<ImageView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:src="@drawable/ic_expertire"-->
+                <!--android:layout_gravity="center"/>-->
+            <!--<TextView-->
+                <!--android:id="@+id/textTopicExpertire"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="ความเชี่ยวชาญ"-->
+                <!--android:padding="5dp"-->
+                <!--android:textSize="18dp"/>-->
+        <!--</LinearLayout>-->
+
+        <!--<EditText-->
+            <!--android:id="@+id/editTextExpertire"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="50dp"-->
+            <!--android:enabled="false"-->
+            <!--android:hint="ข้อมูลความเชี่ยวชาญ"-->
+            <!--android:inputType="textMultiLine"-->
+            <!--android:textSize="15dp" />-->
+
+        <!---->
+    <!--</LinearLayout>-->
+
+
+</FrameLayout>
