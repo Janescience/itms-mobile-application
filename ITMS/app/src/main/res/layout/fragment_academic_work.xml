@@ -1,0 +1,94 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="system.management.information.itms.AcademicWorkFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_award"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/textTopicAcademicWork"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ผลงานวิชาการ"
+                android:padding="5dp"
+                android:textSize="18dp"/>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editTextAcademicWork"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:enabled="false"
+            android:hint="ข้อมูลผลงานวิชาการ"
+            android:inputType="textMultiLine"
+            android:textSize="15dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_research"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/textTopicResearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ผลงานวิจัย"
+                android:padding="5dp"
+                android:textSize="18dp"/>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editTextResearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:enabled="false"
+            android:hint="ข้อมูลผลงานวิจัย"
+            android:inputType="textMultiLine"
+            android:textSize="15dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            >
+            <Button
+                android:id="@+id/btSaveAcademicWork"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:text="บันทึก"
+                android:background="#FFFFFF"
+                android:layout_weight="2"/>
+            <Button
+                android:id="@+id/btEditAcademicWork"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:text="แก้ไข"
+                android:background="#FFFFFF"
+                android:layout_weight="2"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

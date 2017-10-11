@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginTop="15dp"
+    app:cardCornerRadius="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/post_name"
+            android:hint="ชื่อ-นามสกุล"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:padding="5dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/post_page"
+            android:hint="หน้า"
+            android:textSize="16dp"
+            android:padding="5dp"
+          />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/post_topic"
+            android:hint="หัวข้อ"
+            android:textSize="16dp"
+            android:padding="5dp"
+          />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/post_details"
+            android:hint="รายละเอียด"
+            android:padding="5dp"
+            android:textSize="16dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/post_date"
+            android:hint="วัน / เวลา"
+            android:paddingLeft="200dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="5dp"
+            android:textSize="10dp"
+            />
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>
