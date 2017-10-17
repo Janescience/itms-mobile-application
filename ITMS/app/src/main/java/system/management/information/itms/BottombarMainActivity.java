@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v7.app.ActionBarActivity;
 
+import android.view.Menu;
+import android.view.MenuItem;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnMenuTabClickListener;
@@ -76,6 +79,25 @@ public class BottombarMainActivity extends ActionBarActivity{
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+
+        if(id == R.id.action_manual){
+            ManualFragment fragment = new ManualFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_bottombar, fragment).commit();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

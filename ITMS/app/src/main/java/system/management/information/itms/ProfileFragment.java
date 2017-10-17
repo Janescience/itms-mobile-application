@@ -72,6 +72,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
 
 
+
+
         textName = (EditText) rootView.findViewById(R.id.txtNameShow);
         textPhone = (EditText) rootView.findViewById(R.id.txtPhoneShow);
 

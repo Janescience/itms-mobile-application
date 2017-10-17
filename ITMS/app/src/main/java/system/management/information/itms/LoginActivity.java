@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 /**
  * Created by janescience on 8/8/2560.
@@ -33,6 +35,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private ProgressDialog progressDialog;
 
     private FirebaseAuth firebaseAuth;
+
+    private static final String TAG = "Login";
 
     protected void onCreate(Bundle savedIntanceState) {
 
@@ -105,6 +109,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             Toast.makeText(LoginActivity.this,"เข้าสู่ระบบสำเร็จ",Toast.LENGTH_SHORT).show();
                             finish();
                             startActivity(new Intent(getApplicationContext(), BottombarMainActivity.class));
+
+                            FirebaseMessaging.getInstance().subscribeToTopic("news");
+                            Log.d(TAG, "FollowToITMS");
+
                         }else{
                             Toast.makeText(LoginActivity.this,"ไม่สามารถเข้าสู่ระบบได้ กรุณาลองอีกครั้ง",Toast.LENGTH_SHORT).show();
                         }

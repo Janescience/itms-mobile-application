@@ -1,0 +1,743 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\f08aa179adb8266a6a1b81d0fcdfecff0a21f2c4\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_5a0366524e00ecbf2ea9503e370edb5ba8ce1901.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\9483543ddfa7d023dcc93299571ef29c46d50282\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="900a290779cdb4eb2e63b6f7806fd9f30ce4f60d">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_89ab28c185518e634f52ebf1fec5facfa3ec1fce.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\d89c1838843395f8f07281449caa71ffb996f567\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9ff5114aff3bfb387577ba92a11408dcf0441c24">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_764efbac56670494dd98d69c7dded925f4d06950.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\7237596565b8f89e4a4c191d5187cadf27cae583\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_ec08c440f52b17b08b2e53ca3ae9b3c572ed98b4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\AppData\Local\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\constraint-layout-solver-1.0.2_a5aeaf3aedae97fa64c9fc7abef78af7bc9ca137.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\a3d180329ef12a061b04ee9d8846eef276815b95\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_09abf0f8ce5939dbe82dee4f5e157e5de5cb681e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\converter-gson\2.2.0\a09926806199499a20b2f5168779499abfa33342\converter-gson-2.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a09926806199499a20b2f5168779499abfa33342">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\converter-gson-2.2.0_72054256e99d5e9aff00e9cb947516d1dffc116b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\b99a296a6fdd37984296e9f8c967c459ba8f9021\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="75d15557ff7531e59b01362d46bb06dd59c5f971">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_692bd8ed070691e04b74d1b43fbb247947a35ae0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\b9008ac75da914396eb851d2bbb4995d17723d67\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="ac6948cce36f694f3eb3d73a135e298dc4b3527a">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_d56cd59790fc87e788d9e24bf01df68868cd9586.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\beb781cea49465685f26cd0d6561b901308e0500\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="0a534044236cf81b002604643d23e7ca56bd1ee0">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_595d667a0dbc0f7d34617043116fc679c9105195.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\picasso-2.5.2_ce4082d2b9144960b89b84d3e362913566b86c77.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\e31d0b06ff99ffa56b8d8b4ea43ed12d5a43e452\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_0839edc0a90d08261d8d0e31a79739ba5e2ca6cd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\retrofit\2.2.0\41e67dba73c3347e4503761642c39d0e06ca1f2\retrofit-2.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="041e67dba73c3347e4503761642c39d0e06ca1f2">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\retrofit-2.2.0_f5862a6c54dfe488bb7020fd9545929bfc2e7cdb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\64e23463290cd56fb9fe60cc3be3a8aa2805ee65\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="7b3eaf755284fb08a6d616a55fbb07dc3917d5e7">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_7851470c5a9b49218e436334d78c72e5f08922e7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.11.0\840897fcd7223a8143f1d9b6f69714e7be34fd50\okio-1.11.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="840897fcd7223a8143f1d9b6f69714e7be34fd50">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\okio-1.11.0_e2585a16c2d2319e85c9599769c9fe516083a644.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\99a832760e0091e152c42c1ad4476eacf5d48eec\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="95519720620b553f63afc789beba9ad582807f7c">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_45e9aa874daa794e25d05b28beb514fb0e5b6ea0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\12a72e074c8588f234582c60a4831ff338d02985\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="de24d8023e8da79f30bee46b298f606e5e758432">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_b656ca07190040dfa76429a1b3901e3416652292.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.6.0\69edde9fc4b01c9fd51d25b83428837478c27254\okhttp-3.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="69edde9fc4b01c9fd51d25b83428837478c27254">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\okhttp-3.6.0_ef1c6801ef8dc9f1d9493e629573df86aad7280e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\37ecb37dd6aba40e4a7b65c445c7a44b888ff4bc\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8f83a631abfdb790591a720e0cfb5f41329831c3">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_d264f76c25fb01f776e7bb5182adf39083e22c24.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\16b54e9f87104127335809b1ada0ed26005c5c9a\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d79c575e1d97b0298746a4c032a0c1dc201c2f82">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_8ec2464d6d2b8201992c1127ecd9d52c8b305bf5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\0f49c24c3996592588a0919a534e1d9b3c5f8f7e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1108575c7dc7b7f5b378b3290ac90de81a9b8830">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_c6d7f1c4e431913c681ff10aba3ccdf467f78b34.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\picasso-2.5.2_ce4082d2b9144960b89b84d3e362913566b86c77.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\2add702b9f9bcebcb6de7f2ef5c07aedaf7e3cad\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_1143d24763445125eb05d8a8be61fc4cb875966c.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="bf7adbfd2745b930ed401dede449c01b2cae4c25">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_cce1963623a9f551fa7ff953ef6c88f235d715df\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\ead1f8ee0bf94c3182af560879adb74a07ac3c34\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="5c1f80f62ccad560edcd6609fc75f385cf7cb45a">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_10dc3b09d43b4f9493c15868f5227ab6ea6a133b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\b9008ac75da914396eb851d2bbb4995d17723d67\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ac6948cce36f694f3eb3d73a135e298dc4b3527a">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_d56cd59790fc87e788d9e24bf01df68868cd9586.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\677c3a222f7c136a9fc0ebdfb6635d3d55442038\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3176799c0b6b90674b10a5d270b1bedbe0421901">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_d1a5fe6d6d9e4946f80e105260e09e93aeaf47b1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\8304fbf4057829d1c6ad8ec5d95d7f9c1d7cc3be\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_b2df5a65ff9cd70d220389aebd24ab8c72c9fcc9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\ad866df16f49ada297b6aec205534863f35d9321\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_f700c362400d7c342a5bce4a5da03d335f43d832.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\2e86c7e27465dcd6e78ade0c1ef826e82bedd239\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3f0a85e6000998ac322ddd50750e8cf91601a84b">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_b0d28037dd16ffbf2075244eb316385428fef839.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.7\751f548c85fa49f330cecbb1875893f971b33c4e\gson-2.7.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\gson-2.7_baa5aeb9601ce488b7a39f8054ad2b58ed0c7281.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\091cf1165fa6407a96bc30ed2e91575e7d8d0812\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_5c66bf4481927163c6437b76a981e9c75b2fb255.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\a3879f11e9e1fd9a8cd0c8dd867403faffced713\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="ba4defc8cb4ed5b90b8ef71602722cdeebe507cd">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_8842da285da0fd0f3101ef6aec2a4b1fff1d09b8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\2ef8e25166bfd9a2558ddb3105e0f924d545d18f\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_f4371115aa1f70306d79afe1b26b6682c4e419fc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\d0ee69559a1c153de5d3e1c895f82ceab3ad3a89\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_cc08eed106feef044ca47e6b7128bfcfe73b9c9f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.6.0\69edde9fc4b01c9fd51d25b83428837478c27254\okhttp-3.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="69edde9fc4b01c9fd51d25b83428837478c27254">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\okhttp-3.6.0_ef1c6801ef8dc9f1d9493e629573df86aad7280e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\8304fbf4057829d1c6ad8ec5d95d7f9c1d7cc3be\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_b2df5a65ff9cd70d220389aebd24ab8c72c9fcc9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\091cf1165fa6407a96bc30ed2e91575e7d8d0812\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_5c66bf4481927163c6437b76a981e9c75b2fb255.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\0f49c24c3996592588a0919a534e1d9b3c5f8f7e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="1108575c7dc7b7f5b378b3290ac90de81a9b8830">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_c6d7f1c4e431913c681ff10aba3ccdf467f78b34.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\37ecb37dd6aba40e4a7b65c445c7a44b888ff4bc\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="8f83a631abfdb790591a720e0cfb5f41329831c3">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_d264f76c25fb01f776e7bb5182adf39083e22c24.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\677c3a222f7c136a9fc0ebdfb6635d3d55442038\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3176799c0b6b90674b10a5d270b1bedbe0421901">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_d1a5fe6d6d9e4946f80e105260e09e93aeaf47b1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\2add702b9f9bcebcb6de7f2ef5c07aedaf7e3cad\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_1143d24763445125eb05d8a8be61fc4cb875966c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\2ef8e25166bfd9a2558ddb3105e0f924d545d18f\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_f4371115aa1f70306d79afe1b26b6682c4e419fc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\support-annotations-25.3.1_a41da2fa487f9cd0495ad045afab3ce2c2f5fbb1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\467872d9db78b43600e0d9db4529992735e7e2cf\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="69e74a8b1cbf5b8ee0fc0cca6bab1ac6c45efef8">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_92500c9df09959d0f8109bd1da015efcb648004f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\89e77709186b1f6ba0949b1b35dd03ca28a37603\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="f74bf45cb3b2a686ca6d17feadbda6868e43e6c1">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_5838556b22087d664ab60a02d5b306b5c3303e15.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.11.0\840897fcd7223a8143f1d9b6f69714e7be34fd50\okio-1.11.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="840897fcd7223a8143f1d9b6f69714e7be34fd50">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\okio-1.11.0_e2585a16c2d2319e85c9599769c9fe516083a644.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_19b6c05a8190ab0403720e70caef9d2bd11b4d38\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\c6c7a2764748fa0d03f1e7e4c642916de8b385a8\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_339891cc3493aa6954232d6d66a8d4ee97be0386.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\51eb7790a2f20fe4997e22da200e1dfad2f88a78\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="da832806828ba407284c0c4b1d87b8f9ed9f2520">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_64166e10185f21c8461cb23c27244bb41a8f3a38.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\ebb8bc8cd66d03a3068aab55ce70261924f930e3\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="c76f6507a42aec274953e882bf3c49a570843ef5">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_649912265cb81f9e1be3ac82e2ea42d9b56c76f8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.7\751f548c85fa49f330cecbb1875893f971b33c4e\gson-2.7.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\gson-2.7_baa5aeb9601ce488b7a39f8054ad2b58ed0c7281.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\f08aa179adb8266a6a1b81d0fcdfecff0a21f2c4\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_5a0366524e00ecbf2ea9503e370edb5ba8ce1901.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\f8b9a61604fbf9034b6389b52ea910e50e335c98\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3dbaff65d26258306561d545f88d6712ac41dd46">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_92f1501fdc25ccda9da7459247446d365bab71a5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\e2f52e2f5d1d44e42c66f46cd00b0dd0b91043ef\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="38789e20ace9ab7dbd00554bd2673ab424478d3b">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_0f6fbec30ce48da7356c74aea432981607e061db.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\a3d180329ef12a061b04ee9d8846eef276815b95\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_09abf0f8ce5939dbe82dee4f5e157e5de5cb681e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\d89c1838843395f8f07281449caa71ffb996f567\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="9ff5114aff3bfb387577ba92a11408dcf0441c24">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_764efbac56670494dd98d69c7dded925f4d06950.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\9483543ddfa7d023dcc93299571ef29c46d50282\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="900a290779cdb4eb2e63b6f7806fd9f30ce4f60d">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_89ab28c185518e634f52ebf1fec5facfa3ec1fce.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\a3879f11e9e1fd9a8cd0c8dd867403faffced713\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ba4defc8cb4ed5b90b8ef71602722cdeebe507cd">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_8842da285da0fd0f3101ef6aec2a4b1fff1d09b8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\c6c7a2764748fa0d03f1e7e4c642916de8b385a8\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_339891cc3493aa6954232d6d66a8d4ee97be0386.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\support-annotations-25.3.1_a41da2fa487f9cd0495ad045afab3ce2c2f5fbb1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\b99a296a6fdd37984296e9f8c967c459ba8f9021\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="75d15557ff7531e59b01362d46bb06dd59c5f971">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_692bd8ed070691e04b74d1b43fbb247947a35ae0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\ebb8bc8cd66d03a3068aab55ce70261924f930e3\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c76f6507a42aec274953e882bf3c49a570843ef5">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_649912265cb81f9e1be3ac82e2ea42d9b56c76f8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\d0ee69559a1c153de5d3e1c895f82ceab3ad3a89\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_cc08eed106feef044ca47e6b7128bfcfe73b9c9f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\retrofit\2.2.0\41e67dba73c3347e4503761642c39d0e06ca1f2\retrofit-2.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="041e67dba73c3347e4503761642c39d0e06ca1f2">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\retrofit-2.2.0_f5862a6c54dfe488bb7020fd9545929bfc2e7cdb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\16b54e9f87104127335809b1ada0ed26005c5c9a\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d79c575e1d97b0298746a4c032a0c1dc201c2f82">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_8ec2464d6d2b8201992c1127ecd9d52c8b305bf5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\beb781cea49465685f26cd0d6561b901308e0500\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0a534044236cf81b002604643d23e7ca56bd1ee0">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_595d667a0dbc0f7d34617043116fc679c9105195.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\e31d0b06ff99ffa56b8d8b4ea43ed12d5a43e452\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_0839edc0a90d08261d8d0e31a79739ba5e2ca6cd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\converter-gson\2.2.0\a09926806199499a20b2f5168779499abfa33342\converter-gson-2.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="a09926806199499a20b2f5168779499abfa33342">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\converter-gson-2.2.0_72054256e99d5e9aff00e9cb947516d1dffc116b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\7237596565b8f89e4a4c191d5187cadf27cae583\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_ec08c440f52b17b08b2e53ca3ae9b3c572ed98b4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\f8b9a61604fbf9034b6389b52ea910e50e335c98\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3dbaff65d26258306561d545f88d6712ac41dd46">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_92f1501fdc25ccda9da7459247446d365bab71a5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\12a72e074c8588f234582c60a4831ff338d02985\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="de24d8023e8da79f30bee46b298f606e5e758432">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_b656ca07190040dfa76429a1b3901e3416652292.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\64e23463290cd56fb9fe60cc3be3a8aa2805ee65\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7b3eaf755284fb08a6d616a55fbb07dc3917d5e7">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_7851470c5a9b49218e436334d78c72e5f08922e7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\ad866df16f49ada297b6aec205534863f35d9321\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_f700c362400d7c342a5bce4a5da03d335f43d832.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\51eb7790a2f20fe4997e22da200e1dfad2f88a78\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="da832806828ba407284c0c4b1d87b8f9ed9f2520">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_64166e10185f21c8461cb23c27244bb41a8f3a38.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\2e86c7e27465dcd6e78ade0c1ef826e82bedd239\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3f0a85e6000998ac322ddd50750e8cf91601a84b">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_b0d28037dd16ffbf2075244eb316385428fef839.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\89e77709186b1f6ba0949b1b35dd03ca28a37603\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f74bf45cb3b2a686ca6d17feadbda6868e43e6c1">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_5838556b22087d664ab60a02d5b306b5c3303e15.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\e2f52e2f5d1d44e42c66f46cd00b0dd0b91043ef\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="38789e20ace9ab7dbd00554bd2673ab424478d3b">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_0f6fbec30ce48da7356c74aea432981607e061db.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\99a832760e0091e152c42c1ad4476eacf5d48eec\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="95519720620b553f63afc789beba9ad582807f7c">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_45e9aa874daa794e25d05b28beb514fb0e5b6ea0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\ead1f8ee0bf94c3182af560879adb74a07ac3c34\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5c1f80f62ccad560edcd6609fc75f385cf7cb45a">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_10dc3b09d43b4f9493c15868f5227ab6ea6a133b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\AppData\Local\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\constraint-layout-solver-1.0.2_a5aeaf3aedae97fa64c9fc7abef78af7bc9ca137.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Janescience\.android\build-cache\467872d9db78b43600e0d9db4529992735e7e2cf\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="69e74a8b1cbf5b8ee0fc0cca6bab1ac6c45efef8">
+        <dex dex="C:\Users\Janescience\Desktop\ITMS-PROJECT\ItmsAndroidProject\ITMS\app\build\intermediates\pre-dexed\debug\classes_92500c9df09959d0f8109bd1da015efcb648004f.jar" />
+    </item>
+
+</items>

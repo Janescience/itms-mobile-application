@@ -63,17 +63,7 @@ public class PortfolioFragment extends Fragment {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        int id = item.getItemId();
 
-        if(id == R.id.action_setting){
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-
-    }
 
 
 

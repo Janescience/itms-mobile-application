@@ -6,6 +6,8 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +32,8 @@ public class WorkHistoryFragment extends Fragment {
     private FirebaseAuth mAuth;
     private ProgressDialog progressDialog;
     private DatabaseReference mDatabase;
+
+    public String education;
     Typeface Fonts;
 
 
@@ -48,21 +52,16 @@ public class WorkHistoryFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_work_history, container, false);
 
+        final RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view);
+        rv.setHasFixedSize(true);
+
+
+
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        rv.setLayoutManager(llm);
+
         Fonts = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Kanit-Light.ttf");
 
-        TextView topicWork = (TextView) rootView.findViewById(R.id.textTopicWork);
-        TextView topicInformation= (TextView) rootView.findViewById(R.id.textTopicMoreInformation);
-        EditText editWork = (EditText) rootView.findViewById(R.id.editTextWork);
-        EditText editInformation = (EditText) rootView.findViewById(R.id.editTextMoreInformation);
-        Button btSaveWork = (Button)   rootView.findViewById(R.id.btSaveWork);
-        Button btEditWork = (Button)   rootView.findViewById(R.id.btEditWork);
-
-        topicWork.setTypeface(Fonts);
-        topicInformation.setTypeface(Fonts);
-        editWork.setTypeface(Fonts);
-        editInformation.setTypeface(Fonts);
-        btSaveWork.setTypeface(Fonts);
-        btEditWork.setTypeface(Fonts);
 
         progressDialog = new ProgressDialog(getActivity());
         mAuth = FirebaseAuth.getInstance();
@@ -77,7 +76,15 @@ public class WorkHistoryFragment extends Fragment {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
 
+                            MyWorkHistoryAdapter adapter = new MyWorkHistoryAdapter(new String[]{
+                                    dataSnapshot.child("work").child("his_work").getValue().toString(),
+                                    dataSnapshot.child("work").child("more_info").getValue().toString()
 
+                            }, new String[]{
+                                    "ประวัติการทำงาน",
+                                    "ข้อมูลเพิ่มเติม"
+                            });
+                            rv.setAdapter(adapter);
                         }
 
                         @Override
@@ -86,8 +93,11 @@ public class WorkHistoryFragment extends Fragment {
                         }
                     });
                 }
+
             }
         };
+
+
 
         // Inflate the layout for this fragment
         return rootView;

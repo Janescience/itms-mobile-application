@@ -55,7 +55,7 @@ public class HistoryFragment extends Fragment {
                 mDatabase
 
         ) {
-            protected void populateViewHolder(HistoryViewHolder viewHolder, History model, int position) {
+            protected void populateViewHolder(HistoryViewHolder viewHolder, History model,final int position) {
                 viewHolder.setName(model.getName());
                 viewHolder.setPage(model.getPage());
                 viewHolder.setTopic(model.getTopic());

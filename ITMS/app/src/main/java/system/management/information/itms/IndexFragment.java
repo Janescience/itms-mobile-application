@@ -8,10 +8,13 @@ import android.icu.text.DateFormat;
 import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,25 +34,45 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 
-public class IndexFragment extends Fragment {
+public class IndexFragment extends Fragment{
 
     private FirebaseAuth.AuthStateListener mAuthListener,mAuthListenerUser;
     private FirebaseAuth mAuth, mAuthUser,firebaseAuth;
     private DatabaseReference mDatabase, mDatabaseHistory,mDatabaseUser;
-    private EditText editTextTopic_1,name;
+    private EditText editTextTopic_1;
     private Button  buttonedit,buttonSave;
     private TextView Topic;
     private ProgressDialog progressDialog;
-    private String date, currentDateTimeString,nameEdit;
-    private Spinner spinnerPage;
-    private String txt_spinnerTopic,txt_spinnerPage;
+    private String currentDateTimeString,nameEdit,nameUser;
+    public Spinner spinnerPage;
+    public String txt_spinnerTopic,txt_spinnerPage;
+    private String currentDate,currentMonth,currentYear,currentTime;
+    private String date,time;
+    public  Spinner spinner;
+    private Integer indexSpinnerPage,indexSpinnerTopic;
 
+    private static final String AUTH_KEY="key=AAAALVRxPuo:APA91bEVQA6g8xJLelUeh6Cr5G-cDh2ZwA7qtayoNeax7Q3A__I_t5ICpvp5cU9mX72UQKAQrWmNtmTgm74RILQZAeJ8TpGqcnWrh-qKml_jfSDkoicY95dgwFbL1Z6grn0kaP35IpbZ";
+
+
+    private static final String TAG = "IndexFragment";
 
     Typeface Fonts;
 
@@ -68,15 +91,17 @@ public class IndexFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_index, container, false);
-        final Spinner spinner = (Spinner) rootView.findViewById(R.id.spinnerShowEdittext);
+        spinner = (Spinner) rootView.findViewById(R.id.spinnerShowEdittext);
         spinnerPage = (Spinner) rootView.findViewById(R.id.spinnerShowSpinner);
+
+        ((ImageView) rootView.findViewById(R.id.imageSpin)).setImageResource(R.drawable.image_icon);
 
 
         editTextTopic_1 = (EditText) rootView.findViewById(R.id.Topic_1);
 
 
-        buttonedit = (Button) rootView.findViewById(R.id.edit);
-        buttonSave = (Button) rootView.findViewById(R.id.save);
+        buttonedit=(Button) rootView.findViewById(R.id.edit);
+        buttonSave=(Button) rootView.findViewById(R.id.save);
 
 
         mDatabaseHistory = FirebaseDatabase.getInstance().getReference().child("History");
@@ -92,6 +117,20 @@ public class IndexFragment extends Fragment {
         editTextTopic_1.setTypeface(Fonts);
         buttonSave.setTypeface(Fonts);
         buttonedit.setTypeface(Fonts);
+
+
+        final Bundle bundle = this.getArguments();
+
+
+
+        if (getActivity().getIntent().getExtras() != null) {
+            for (String key : getActivity().getIntent().getExtras().keySet()) {
+                Object value = getActivity().getIntent().getExtras().get(key);
+                Log.d(TAG, "Key: " + key + " Value: " + value);
+            }
+        }
+
+
 
 
         buttonedit.setOnClickListener(new View.OnClickListener() {
@@ -120,6 +159,12 @@ public class IndexFragment extends Fragment {
         );
         spinnerPage.setAdapter(adapterPage);
 
+        if (bundle != null) {
+            indexSpinnerPage  = bundle.getInt("spinnerPage");
+            indexSpinnerTopic = bundle.getInt("spinnerTopic");
+            spinnerPage.setSelection(indexSpinnerPage);
+        }
+
         MySpinnerAdapter adapterTopic = new MySpinnerAdapter(
                 getContext(),
                 android.R.layout.simple_spinner_dropdown_item,
@@ -128,13 +173,6 @@ public class IndexFragment extends Fragment {
         spinner.setAdapter(adapterTopic);
 
 
-//        ArrayAdapter<CharSequence> adapterPage = ArrayAdapter.createFromResource(getActivity(), R.array.page_array, android.R.layout.simple_spinner_item);
-//        adapterPage.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spinnerPage.setAdapter(adapterPage);
-
-//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.null_array, android.R.layout.simple_spinner_item);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spinner.setAdapter(adapter);
 
         spinnerPage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -147,6 +185,11 @@ public class IndexFragment extends Fragment {
                             Arrays.asList(getResources().getStringArray(R.array.topic_array))
                     );
                     spinner.setAdapter(adapterTopic);
+
+                    if (bundle != null) {
+                        spinner.setSelection(indexSpinnerTopic);
+                        indexSpinnerTopic=0;
+                    }
                 } else {
                     MySpinnerAdapter adapterTopic = new MySpinnerAdapter(
                             getContext(),
@@ -197,6 +240,7 @@ public class IndexFragment extends Fragment {
                                         buttonSave.setEnabled(false);
                                         editTextTopic_1.setText("ข้อมูลจากเว็บไซต์");
                                         ((ImageView) rootView.findViewById(R.id.imageSpin)).setImageResource(0);
+                                        ((ImageView) rootView.findViewById(R.id.imageSpin)).setImageResource(R.drawable.image_icon);
                                     }
                                 }
 
@@ -232,19 +276,36 @@ public class IndexFragment extends Fragment {
                 buttonSave.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
                         txt_spinnerTopic = spinner.getSelectedItem().toString();
                         if (txt_spinnerTopic.equals("ข้อความส่วนหัวรูปภาพสไลด์")) {
+
+                            FirebaseMessaging.getInstance().unsubscribeFromTopic("news");
 
                             String EditHeader = editTextTopic_1.getText().toString();
                             mDatabaseEdit.child("Website").child("Index").child("Header").child("txtTopic_First").setValue(EditHeader);
                             editTextTopic_1.setEnabled(false);
                             Toast.makeText(getActivity(), "แก้ไขข้อมูลสำเร็จ", Toast.LENGTH_SHORT).show();
 
+                            sendWithOtherThread("topic");
+
+
+
+                        }else if(txt_spinnerTopic.equals("รายละเอียดส่วนหัวรูปภาพสไลด์")){
+
+                            FirebaseMessaging.getInstance().unsubscribeFromTopic("news");
+
+                            String EditHeader = editTextTopic_1.getText().toString();
+                            mDatabaseEdit.child("Website").child("Index").child("Header").child("txtDetails_First").setValue(EditHeader);
+                            editTextTopic_1.setEnabled(false);
+                            Toast.makeText(getActivity(), "แก้ไขข้อมูลสำเร็จ", Toast.LENGTH_SHORT).show();
+
+                            sendWithOtherThread("topic");
+
 
                         }
 
                         startPosting();
-
                     }
                 });
 
@@ -273,14 +334,109 @@ public class IndexFragment extends Fragment {
             newPost.child("Detail").setValue(detail_val);
             newPost.child("Date").setValue(date_time_val);
             progressDialog.dismiss();
-            Toast.makeText(getActivity(), "Save data complete.", Toast.LENGTH_SHORT).show();
             buttonSave.setEnabled(false);
         }
 
     }
 
 
-    private static class MySpinnerAdapter extends ArrayAdapter<String> {
+
+
+
+    private void sendWithOtherThread(final String type) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
+                currentDate = currentDateTimeString.split(" ")[1];
+                currentMonth =  currentDateTimeString.split(" ")[0];
+                currentYear = currentDateTimeString.split(",")[1];
+                currentTime = currentDateTimeString.split(",")[2];
+
+                date = currentDate.split(",")[0];
+                time = currentTime.split(":")[0]+":"+currentTime.split(":")[1]+" "+currentTime.split(" ")[2];
+
+                pushNotification(type);
+
+            }
+        }).start();
+    }
+
+    private void pushNotification(String type) {
+
+
+        JSONObject jPayload = new JSONObject();
+        JSONObject jNotification = new JSONObject();
+        JSONObject jData = new JSONObject();
+        try {
+            jNotification.put("title",nameEdit);
+            jNotification.put("body",txt_spinnerPage+" | "+txt_spinnerTopic+"       \n"+date +" "+currentMonth+currentYear+" "+time);
+            jNotification.put("sound", "default");
+            jNotification.put("badge", "1");
+            jNotification.put("click_action", "OPEN_ACTIVITY_1");
+            jNotification.put("icon", "ic_launcher");
+
+
+            switch(type) {
+                case "tokens":
+                    JSONArray ja = new JSONArray();
+                    ja.put(FirebaseInstanceId.getInstance().getToken());
+                    jPayload.put("registration_ids", ja);
+                    break;
+                case "topic":
+                    jPayload.put("to", "/topics/news");
+                    break;
+                case "condition":
+                    jPayload.put("condition", "'sport' in topics || 'news' in topics");
+                    break;
+                default:
+                    jPayload.put("to", FirebaseInstanceId.getInstance().getToken());
+            }
+
+            jPayload.put("priority", "high");
+            jPayload.put("notification", jNotification);
+            jPayload.put("data", jData);
+
+            URL url = new URL("https://fcm.googleapis.com/fcm/send");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Authorization", AUTH_KEY);
+            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setDoOutput(true);
+
+            // Send FCM message content.
+            OutputStream outputStream = conn.getOutputStream();
+            outputStream.write(jPayload.toString().getBytes());
+
+            // Read FCM response.
+            InputStream inputStream = conn.getInputStream();
+            final String resp = convertStreamToString(inputStream);
+
+            Handler h = new Handler(Looper.getMainLooper());
+            h.post(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(getActivity(),resp, Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            FirebaseMessaging.getInstance().subscribeToTopic("news");
+
+        } catch (JSONException | IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private String convertStreamToString(InputStream is) {
+        Scanner s = new Scanner(is).useDelimiter("\\A");
+        return s.hasNext() ? s.next().replace(",", ",\n") : "";
+    }
+
+
+
+
+    public static class MySpinnerAdapter extends ArrayAdapter<String> {
         // Initialise custom font, for example:
         Typeface font = Typeface.createFromAsset(getContext().getAssets(),
                 "fonts/Kanit-Light.ttf");
