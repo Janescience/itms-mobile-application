@@ -69,18 +69,13 @@ public class EducationHistoryFragment extends Fragment {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
 
-
-
-                            MyPortfolioAdapter adapter = new MyPortfolioAdapter(new String[]{
+                            MyEducationHistoryAdapter adapter = new MyEducationHistoryAdapter(new String[]{
                                     dataSnapshot.child("education").child("his_education").getValue().toString(),
                                     dataSnapshot.child("education").child("expertise").getValue().toString()
 
                             }, new String[]{
                                     "ประวัติการศึกษา",
                                     "ความถนัดเฉพาะด้าน"
-                            },new int[]{
-                                    R.drawable.ic_education,
-                                    R.drawable.ic_expertire
                             });
                             rv.setAdapter(adapter);
                         }

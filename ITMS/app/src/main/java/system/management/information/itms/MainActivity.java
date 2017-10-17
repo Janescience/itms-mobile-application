@@ -1,5 +1,6 @@
 package system.management.information.itms;
 
+import android.icu.text.DateFormat;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -29,13 +30,17 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Date;
 import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private static final String AUTH_KEY="key=AAAALVRxPuo:APA91bEVQA6g8xJLelUeh6Cr5G-cDh2ZwA7qtayoNeax7Q3A__I_t5ICpvp5cU9mX72UQKAQrWmNtmTgm74RILQZAeJ8TpGqcnWrh-qKml_jfSDkoicY95dgwFbL1Z6grn0kaP35IpbZ";
     private static final String TAG = "MainActivity";
     private TextView mTextView;
-    private String name;
+    private String name,currentDateTimeString;
+    private String currentDate,currentMonth,currentYear,currentTime;
+    private String date,time;
+
 
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseAuth mAuth;
@@ -51,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mTextView = (TextView) findViewById(R.id.txt);
+
+
 
         if (getIntent().getExtras() != null) {
             for (String key : getIntent().getExtras().keySet()) {
@@ -119,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     public void sendToken(View view) {
-        sendWithOtherThread("token");
+        sendWithOtherThread("condtion");
     }
 
     public void sendTokens(View view) {
@@ -134,24 +141,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         new Thread(new Runnable() {
             @Override
             public void run() {
+                currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
+                currentDate = currentDateTimeString.split(" ")[1];
+                currentMonth =  currentDateTimeString.split(" ")[0];
+                currentYear = currentDateTimeString.split(",")[1];
+                currentTime = currentDateTimeString.split(",")[2];
+
+                date = currentDate.split(",")[0];
+                time = currentTime.split(":")[0]+":"+currentTime.split(":")[1]+" "+currentTime.split(" ")[2];
+
                 pushNotification(type);
+
             }
         }).start();
     }
 
     private void pushNotification(String type) {
+
+
         JSONObject jPayload = new JSONObject();
         JSONObject jNotification = new JSONObject();
         JSONObject jData = new JSONObject();
         try {
             jNotification.put("title",name);
-            jNotification.put("body", "Firebase Cloud Messaging (App)");
+            jNotification.put("body","Edited Website             "+date +" "+currentMonth+currentYear+" "+time);
             jNotification.put("sound", "default");
             jNotification.put("badge", "1");
             jNotification.put("click_action", "OPEN_ACTIVITY_1");
             jNotification.put("icon", "ic_launcher");
 
-            jData.put("picture_url", "http://opsbug.com/static/google-io.jpg");
+            jData.put("picture_url", date +" "+currentMonth+currentYear+" "+time);
 
             switch(type) {
                 case "tokens":

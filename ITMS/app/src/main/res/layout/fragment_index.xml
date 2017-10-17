@@ -31,12 +31,12 @@
   <RelativeLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:paddingTop="10dp">
+      android:paddingTop="15dp">
 
         <EditText
             android:id="@+id/Topic_1"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="200dp"
             android:background="#FFFFFF"
             android:enabled="false"
             android:hint="ข้อมูลจากเว็บไซต์"
@@ -73,24 +73,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
-                android:text="แก้ไข"
-                android:enabled="false" />
+                android:enabled="false"
+                android:text="แก้ไข" />
         </LinearLayout>
 
 
     </LinearLayout>
-    <RelativeLayout
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:background="#FFFFFF"
+        android:layout_marginTop="15dp"
         >
 
     <ImageView
         android:id="@+id/imageSpin"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:src="@drawable/image_icon"
-        android:layout_marginTop="35dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-    </RelativeLayout>
+       />
+    </LinearLayout>
 </LinearLayout>
