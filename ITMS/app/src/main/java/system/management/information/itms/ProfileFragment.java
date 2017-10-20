@@ -2,6 +2,7 @@ package system.management.information.itms;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -51,7 +52,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private DatabaseReference mDatabase;
     private CircleImageView imageProfile;
     private EditText  textName,textPhone;
-    private TextView  textEmail,textViewName,textViewPhone,textViewEmail,textViewProfile,Person;
+    private TextView  textEmail,Person,txtPageToolBar;
     private Button btEditImage,btProfile,btEdit,btSave;
     Typeface Fonts;
 
@@ -78,7 +79,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         textPhone = (EditText) rootView.findViewById(R.id.txtPhoneShow);
 
         textEmail = (TextView) rootView.findViewById(R.id.txtEmailShow);
-        Person = (TextView) rootView.findViewById(R.id.txt_person);
+
+        txtPageToolBar = (TextView) rootView.findViewById(R.id.txtPageToolBar) ;
 
         btEditImage = (Button) rootView.findViewById(R.id.btEditImage);
         btProfile = (Button) rootView.findViewById(R.id.btProfile);
@@ -97,9 +99,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         btEditImage.setTypeface(Fonts);
         btEdit.setTypeface(Fonts);
         btSave.setTypeface(Fonts);
-        Person.setTypeface(Fonts);
+        txtPageToolBar.setTypeface(Fonts);
+
 
         btProfile.setOnClickListener(this);
+
 
         btEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,9 +111,15 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 if(textName.isEnabled()== false && textPhone.isEnabled()== false ) {
                     textName.setEnabled(true);
                     textPhone.setEnabled(true);
+                    btSave.setEnabled(true);
+                    btEdit.setText("ยกเลิก");
+                    btEdit.setTextColor(Color.RED);
                 }else{
                     textName.setEnabled(false);
                     textPhone.setEnabled(false);
+                    btSave.setEnabled(false);
+                    btEdit.setText("แก้ไข");
+                    btEdit.setTextColor(Color.BLACK);
                 }
             }
         });

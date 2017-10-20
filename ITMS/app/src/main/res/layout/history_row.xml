@@ -58,6 +58,5 @@
             android:paddingBottom="5dp"
             android:textSize="10dp"
             />
-
     </LinearLayout>
 </android.support.v7.widget.CardView>

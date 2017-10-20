@@ -15,6 +15,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -32,7 +36,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 public class MenuFragment extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "Logout";
-
+    private Boolean checkNotify;
     private Typeface Fonts;
     FirebaseAuth firebaseAuth;
 
@@ -53,12 +57,15 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
         Button logout = (Button) rootview.findViewById(R.id.btLogout);
         Button notify = (Button) rootview.findViewById(R.id.btNotify);
 
+        TextView txtSwitch = (TextView) rootview.findViewById(R.id.txtNotify);
+
+        Switch onOffSwitch = (Switch)  rootview.findViewById(R.id.switchNotify);
+
         notify.setTypeface(Fonts);
         logout.setTypeface(Fonts);
+        txtSwitch.setTypeface(Fonts);
 
         firebaseAuth = FirebaseAuth.getInstance();
-
-
 
 
         notify.setOnClickListener(new View.OnClickListener() {

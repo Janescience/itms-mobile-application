@@ -4,8 +4,6 @@
     android:layout_height="match_parent"
     tools:context="system.management.information.itms.WebViewFragment">
 
-
-
     <WebView
         android:id="@+id/webview"
         android:layout_width="match_parent"

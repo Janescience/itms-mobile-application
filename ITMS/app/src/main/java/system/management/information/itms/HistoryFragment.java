@@ -1,19 +1,30 @@
 package system.management.information.itms;
 
 
+import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 
 
 public class HistoryFragment extends Fragment {
@@ -21,6 +32,41 @@ public class HistoryFragment extends Fragment {
     private RecyclerView mBlogList;
     private DatabaseReference mDatabase;
     static Typeface Fonts;
+    private TextView txtPageToolBar;
+
+
+
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu,MenuInflater inflater) {
+        // Do something that differs the Activity's menu here
+        super.onCreateOptionsMenu(menu, inflater);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchItem.setVisible(true);
+        search(searchView);
+    }
+
+    private void search(SearchView searchView) {
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                return true;
+            }
+        });
+    }
 
 
     public HistoryFragment() {
@@ -30,18 +76,27 @@ public class HistoryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         final View rootview = inflater.inflate(R.layout.fragment_history, container, false);
 
         Fonts = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Kanit-Light.ttf");
 
+        txtPageToolBar = (TextView) rootview.findViewById(R.id.txtPageToolBar) ;
 
+        txtPageToolBar.setTypeface(Fonts);
         mBlogList = (RecyclerView) rootview.findViewById(R.id.blog_list);
         mBlogList.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("History");
 
+        Toolbar toolbar = (Toolbar) rootview.findViewById(R.id.toolbar);
+
+
         return rootview;
+
+
     }
+
 
 
     public void onStart() {
@@ -69,9 +124,10 @@ public class HistoryFragment extends Fragment {
 
     }
 
-    public static class HistoryViewHolder extends RecyclerView.ViewHolder {
+    public static class HistoryViewHolder extends RecyclerView.ViewHolder  {
 
         View mView;
+
 
         public HistoryViewHolder(View itemView) {
             super(itemView);
@@ -108,7 +164,11 @@ public class HistoryFragment extends Fragment {
             post_date.setText(date);
             post_date.setTypeface(Fonts);
         }
+
+
     }
+
+
 }
 
 

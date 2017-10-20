@@ -43,6 +43,7 @@ dependencies {
     compile 'com.google.firebase:firebase-messaging:10.2.6'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.+'
 
+
 }
 
 apply plugin: 'com.google.gms.google-services'

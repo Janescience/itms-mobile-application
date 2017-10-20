@@ -4,19 +4,14 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     tools:layout_editor_absoluteX="0dp"
-    android:background="#FFFFFF"
+    android:background="#4A4A4A"
     app:layout_constraintBottom_toBottomOf="parent"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="system.management.information.itms.RegisterActivity"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <pl.droidsonroids.gif.GifTextView
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-        android:background="@drawable/rocket"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+
 
         <LinearLayout
             android:layout_width="match_parent"

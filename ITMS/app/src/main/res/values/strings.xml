@@ -33,8 +33,10 @@
 
     <string-array name="topic_array">
         <item>เลือกหัวข้อ</item>
-        <item>ข้อความส่วนหัวรูปภาพสไลด์</item>
-        <item>รายละเอียดส่วนหัวรูปภาพสไลด์</item>
+        <item>ข้อความส่วนหัวรูปภาพสไลด์ที่ 1</item>
+        <item>รายละเอียดส่วนหัวรูปภาพสไลด์ที่ 1</item>
+        <item>ข้อความส่วนหัวรูปภาพสไลด์ที่ 2</item>
+        <item>รายละเอียดส่วนหัวรูปภาพสไลด์ที่ 2</item>
     </string-array>
 
     <string-array name="null_array">

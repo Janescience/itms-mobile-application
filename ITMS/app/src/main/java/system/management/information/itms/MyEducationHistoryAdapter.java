@@ -49,8 +49,6 @@ public class MyEducationHistoryAdapter extends RecyclerView.Adapter<MyEducationH
         holder.editExpertiseText.setText(mDataset[1]);
         holder.topicEducationText.setText(mTopicset[0]);
         holder.topicExpertiseText.setText(mTopicset[1]);
-
-
     }
 
     @Override

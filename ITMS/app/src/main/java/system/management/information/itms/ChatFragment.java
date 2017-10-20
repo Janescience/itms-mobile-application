@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,6 +41,7 @@ public class ChatFragment extends Fragment {
     private String chatName;
     private EditText message;
     private Button send;
+    private TextView txtPageToolBar;
 
     private String date, currentDateTimeString;
 
@@ -118,6 +120,10 @@ public class ChatFragment extends Fragment {
 
         Fonts = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Kanit-Light.ttf");
 
+        txtPageToolBar = (TextView) rootView.findViewById(R.id.txtPageToolBar) ;
+        txtPageToolBar.setTypeface(Fonts);
+
+        Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
 
         currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
 
