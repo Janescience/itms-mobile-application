@@ -13,9 +13,16 @@ import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -59,11 +66,13 @@ public class IndexFragment extends Fragment{
     private DatabaseReference mDatabase, mDatabaseHistory,mDatabaseUser;
     private EditText editTextTopic_1;
     private Button  buttonedit,buttonSave;
-    private TextView Topic;
+    private TextView txtPageToolBar;
     private ProgressDialog progressDialog;
     private String currentDateTimeString,nameEdit,nameUser;
-    public Spinner spinnerPage;
+    public  Spinner spinnerPage;
+    public Object spinnerTopicPosition,spinnerPagePosition;
     public String txt_spinnerTopic,txt_spinnerPage;
+
     private String currentDate,currentMonth,currentYear,currentTime;
     private String date,time;
     public  Spinner spinner;
@@ -83,7 +92,18 @@ public class IndexFragment extends Fragment{
     public void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
+    }
 
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        MenuItem manualItem = menu.findItem(R.id.action_manual);
+        manualItem.setVisible(true);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -94,11 +114,11 @@ public class IndexFragment extends Fragment{
         spinner = (Spinner) rootView.findViewById(R.id.spinnerShowEdittext);
         spinnerPage = (Spinner) rootView.findViewById(R.id.spinnerShowSpinner);
 
-        ((ImageView) rootView.findViewById(R.id.imageSpin)).setImageResource(R.drawable.image_icon);
+
 
 
         editTextTopic_1 = (EditText) rootView.findViewById(R.id.Topic_1);
-
+        txtPageToolBar = (TextView) rootView.findViewById(R.id.txtPageToolBar) ;
 
         buttonedit=(Button) rootView.findViewById(R.id.edit);
         buttonSave=(Button) rootView.findViewById(R.id.save);
@@ -117,9 +137,25 @@ public class IndexFragment extends Fragment{
         editTextTopic_1.setTypeface(Fonts);
         buttonSave.setTypeface(Fonts);
         buttonedit.setTypeface(Fonts);
+        txtPageToolBar.setTypeface(Fonts);
 
 
         final Bundle bundle = this.getArguments();
+
+        Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_book);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ManualFragment fragment = new ManualFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_bottombar, fragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+
+
 
 
 
@@ -163,6 +199,8 @@ public class IndexFragment extends Fragment{
             indexSpinnerPage  = bundle.getInt("spinnerPage");
             indexSpinnerTopic = bundle.getInt("spinnerTopic");
             spinnerPage.setSelection(indexSpinnerPage);
+        }else{
+            ((ImageView) rootView.findViewById(R.id.imageSpin)).setImageResource(R.drawable.image_icon);
         }
 
         MySpinnerAdapter adapterTopic = new MySpinnerAdapter(
@@ -177,8 +215,9 @@ public class IndexFragment extends Fragment{
         spinnerPage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                spinnerPagePosition = spinnerPage.getSelectedItemPosition();
                 txt_spinnerPage = spinnerPage.getSelectedItem().toString();
-                if (txt_spinnerPage.equals("หน้าแรก")) {
+                if (spinnerPagePosition.equals(1)) {
                     MySpinnerAdapter adapterTopic = new MySpinnerAdapter(
                             getContext(),
                             android.R.layout.simple_spinner_dropdown_item,
@@ -189,6 +228,7 @@ public class IndexFragment extends Fragment{
                     if (bundle != null) {
                         spinner.setSelection(indexSpinnerTopic);
                         indexSpinnerTopic=0;
+
                     }
                 } else {
                     MySpinnerAdapter adapterTopic = new MySpinnerAdapter(
@@ -224,18 +264,28 @@ public class IndexFragment extends Fragment{
                             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                                    String txt = spinner.getSelectedItem().toString();
-                                    if (txt.equals("ข้อความส่วนหัวรูปภาพสไลด์")) {
+                                    Object txt = spinner.getSelectedItemPosition();
+                                    if (txt.equals(1)) {
                                         buttonedit.setEnabled(true);
                                         editTextTopic_1.setText(dataSnapshot.child("txtTopic_First").getValue().toString());
                                         ((ImageView) rootView.findViewById(R.id.imageSpin)).setImageResource(0);
                                         ((ImageView) rootView.findViewById(R.id.imageSpin)).setImageResource(R.drawable.header_first);
-                                    } else if (txt.equals("รายละเอียดส่วนหัวรูปภาพสไลด์")) {
+                                    } else if (txt.equals(2)) {
                                         buttonedit.setEnabled(true);
                                         editTextTopic_1.setText(dataSnapshot.child("txtDetails_First").getValue().toString());
                                         ((ImageView) rootView.findViewById(R.id.imageSpin)).setImageResource(0);
                                         ((ImageView) rootView.findViewById(R.id.imageSpin)).setImageResource(R.drawable.header_first);
-                                    } else {
+                                    } else if (txt.equals(3)) {
+                                        buttonedit.setEnabled(true);
+                                        editTextTopic_1.setText(dataSnapshot.child("txtTopic_Second").getValue().toString());
+                                        ((ImageView) rootView.findViewById(R.id.imageSpin)).setImageResource(0);
+                                        ((ImageView) rootView.findViewById(R.id.imageSpin)).setImageResource(R.drawable.header_first);
+                                    } else if (txt.equals(4)) {
+                                        buttonedit.setEnabled(true);
+                                        editTextTopic_1.setText(dataSnapshot.child("txtDetails_Second").getValue().toString());
+                                        ((ImageView) rootView.findViewById(R.id.imageSpin)).setImageResource(0);
+                                        ((ImageView) rootView.findViewById(R.id.imageSpin)).setImageResource(R.drawable.header_first);
+                                    }else{
                                         buttonedit.setEnabled(false);
                                         buttonSave.setEnabled(false);
                                         editTextTopic_1.setText("ข้อมูลจากเว็บไซต์");
@@ -277,8 +327,9 @@ public class IndexFragment extends Fragment{
                     @Override
                     public void onClick(View view) {
 
+                        spinnerTopicPosition = spinner.getSelectedItemPosition();
                         txt_spinnerTopic = spinner.getSelectedItem().toString();
-                        if (txt_spinnerTopic.equals("ข้อความส่วนหัวรูปภาพสไลด์")) {
+                        if (spinnerTopicPosition.equals(1)) {
 
                             FirebaseMessaging.getInstance().unsubscribeFromTopic("news");
 
@@ -290,8 +341,7 @@ public class IndexFragment extends Fragment{
                             sendWithOtherThread("topic");
 
 
-
-                        }else if(txt_spinnerTopic.equals("รายละเอียดส่วนหัวรูปภาพสไลด์")){
+                        }else if(spinnerTopicPosition.equals(2)){
 
                             FirebaseMessaging.getInstance().unsubscribeFromTopic("news");
 
@@ -302,6 +352,27 @@ public class IndexFragment extends Fragment{
 
                             sendWithOtherThread("topic");
 
+                        }else if(spinnerTopicPosition.equals(3)){
+
+                            FirebaseMessaging.getInstance().unsubscribeFromTopic("news");
+
+                            String EditHeader = editTextTopic_1.getText().toString();
+                            mDatabaseEdit.child("Website").child("Index").child("Header").child("txtTopic_Second").setValue(EditHeader);
+                            editTextTopic_1.setEnabled(false);
+                            Toast.makeText(getActivity(), "แก้ไขข้อมูลสำเร็จ", Toast.LENGTH_SHORT).show();
+
+                            sendWithOtherThread("topic");
+
+                        }else if(spinnerTopicPosition.equals(4)){
+
+                            FirebaseMessaging.getInstance().unsubscribeFromTopic("news");
+
+                            String EditHeader = editTextTopic_1.getText().toString();
+                            mDatabaseEdit.child("Website").child("Index").child("Header").child("txtDetails_Second").setValue(EditHeader);
+                            editTextTopic_1.setEnabled(false);
+                            Toast.makeText(getActivity(), "แก้ไขข้อมูลสำเร็จ", Toast.LENGTH_SHORT).show();
+
+                            sendWithOtherThread("topic");
 
                         }
 
@@ -313,9 +384,10 @@ public class IndexFragment extends Fragment{
             }
         };
 
-
         return rootView;
     }
+
+
 
     private void startPosting() {
 
@@ -339,10 +411,6 @@ public class IndexFragment extends Fragment{
 
     }
 
-
-
-
-
     private void sendWithOtherThread(final String type) {
         new Thread(new Runnable() {
             @Override
@@ -363,8 +431,6 @@ public class IndexFragment extends Fragment{
     }
 
     private void pushNotification(String type) {
-
-
         JSONObject jPayload = new JSONObject();
         JSONObject jNotification = new JSONObject();
         JSONObject jData = new JSONObject();

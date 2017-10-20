@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 
 import android.view.Menu;
@@ -85,6 +86,16 @@ public class BottombarMainActivity extends ActionBarActivity{
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.main, menu);
+
+        MenuItem itemSearch=menu.findItem(R.id.action_search);
+        itemSearch.setVisible(false);
+
+        MenuItem itemBack=menu.findItem(R.id.action_back);
+        itemBack.setVisible(false);
+
+        MenuItem itemManual=menu.findItem(R.id.action_manual);
+        itemManual.setVisible(false);
+
         return true;
     }
 
@@ -96,8 +107,13 @@ public class BottombarMainActivity extends ActionBarActivity{
             ManualFragment fragment = new ManualFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.frame_bottombar, fragment).commit();
             return true;
+        }else if(id == R.id.action_back){
+            onBackPressed();
         }
         return super.onOptionsItemSelected(item);
+
     }
+
+
 
 }

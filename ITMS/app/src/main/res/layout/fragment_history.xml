@@ -2,12 +2,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="system.management.information.itms.HistoryFragment">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:contentInsetStart="0dp"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/txtPageToolBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ประวัติการแก้ไข"
+            android:textSize="20dp"
+            android:gravity="center" />
+
+    </android.support.v7.widget.Toolbar>
 
    <RelativeLayout
        android:layout_width="match_parent"
        android:layout_height="match_parent"
-       android:layout_marginBottom="10dp">
+       android:layout_marginBottom="10dp"
+       android:layout_marginTop="60dp">
 
        <android.support.v7.widget.RecyclerView
            android:layout_width="match_parent"

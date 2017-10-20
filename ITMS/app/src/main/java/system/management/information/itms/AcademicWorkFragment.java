@@ -6,6 +6,8 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +32,8 @@ public class AcademicWorkFragment extends Fragment {
     private FirebaseAuth mAuth;
     private ProgressDialog progressDialog;
     private DatabaseReference mDatabase;
+
+    public String education;
     Typeface Fonts;
 
 
@@ -48,21 +52,16 @@ public class AcademicWorkFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_academic_work, container, false);
 
+        final RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view);
+        rv.setHasFixedSize(true);
+
+
+
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        rv.setLayoutManager(llm);
+
         Fonts = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Kanit-Light.ttf");
 
-        TextView topicAcademicWork = (TextView) rootView.findViewById(R.id.textTopicAcademicWork);
-        TextView topicResearch= (TextView) rootView.findViewById(R.id.textTopicResearch);
-        EditText editAcademicWork = (EditText) rootView.findViewById(R.id.editTextAcademicWork);
-        EditText editResearch= (EditText) rootView.findViewById(R.id.editTextResearch);
-        Button btSaveAcademicWork = (Button)   rootView.findViewById(R.id.btSaveAcademicWork);
-        Button btEditAcademicWork = (Button)   rootView.findViewById(R.id.btEditAcademicWork);
-
-        topicAcademicWork.setTypeface(Fonts);
-        topicResearch.setTypeface(Fonts);
-        editAcademicWork.setTypeface(Fonts);
-        editResearch.setTypeface(Fonts);
-        btSaveAcademicWork.setTypeface(Fonts);
-        btEditAcademicWork.setTypeface(Fonts);
 
         progressDialog = new ProgressDialog(getActivity());
         mAuth = FirebaseAuth.getInstance();
@@ -77,7 +76,15 @@ public class AcademicWorkFragment extends Fragment {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
 
+                            MyAcademicWorkAdapter adapter = new MyAcademicWorkAdapter(new String[]{
+                                    dataSnapshot.child("academic_work").child("acdemic").getValue().toString(),
+                                    dataSnapshot.child("academic_work").child("research").getValue().toString()
 
+                            }, new String[]{
+                                    "ผลงานวิชาการ",
+                                    "งานวิจัย"
+                            });
+                            rv.setAdapter(adapter);
                         }
 
                         @Override
@@ -86,8 +93,11 @@ public class AcademicWorkFragment extends Fragment {
                         }
                     });
                 }
+
             }
         };
+
+
 
         // Inflate the layout for this fragment
         return rootView;

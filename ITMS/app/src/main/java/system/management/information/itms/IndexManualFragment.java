@@ -80,8 +80,6 @@ public class IndexManualFragment extends Fragment {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
 
-
-
                             MyIndexManualAdapter adapter = new MyIndexManualAdapter(new int[]{
                                     R.drawable.index_manual
                             });

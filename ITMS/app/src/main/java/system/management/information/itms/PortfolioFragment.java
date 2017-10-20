@@ -8,10 +8,14 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,11 +26,27 @@ public class PortfolioFragment extends Fragment {
 
     private ViewPager mViewPager;
     private Typeface Fonts;
+    private TextView txtPageToolBar;
 
 
     public PortfolioFragment() {
         // Required empty public constructor
     }
+
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu,MenuInflater inflater) {
+        // Do something that differs the Activity's menu here
+        super.onCreateOptionsMenu(menu, inflater);
+        MenuItem backItem = menu.findItem(R.id.action_back);
+        backItem.setVisible(true);
+    }
+
+
 
 
 
@@ -34,8 +54,8 @@ public class PortfolioFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_portfolio, container, false);
+        txtPageToolBar = (TextView) v.findViewById(R.id.txtPageToolBar) ;
 
-        Toolbar toolbar = (Toolbar) v.findViewById(R.id.toolbar);
 
         Fonts = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Kanit-Light.ttf");
 
@@ -43,8 +63,21 @@ public class PortfolioFragment extends Fragment {
         PagerAdapter pagerAdapter = new PagerAdapter(getChildFragmentManager(),getContext());
         mViewPager.setAdapter(pagerAdapter);
 
+        txtPageToolBar.setTypeface(Fonts);
+
         TabLayout tabLayout = (TabLayout) v.findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(mViewPager);
+
+        Toolbar toolbar = (Toolbar) v.findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              getActivity().onBackPressed();
+            }
+        });
+
+
 
         for(int i = 0; i < tabLayout.getTabCount(); i++){
             TabLayout.Tab tab = tabLayout.getTabAt(i);

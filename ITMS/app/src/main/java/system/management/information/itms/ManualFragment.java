@@ -36,9 +36,11 @@ public class ManualFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_manual, container, false);
 
-        Toolbar toolbar = (Toolbar) v.findViewById(R.id.toolbar);
+        TextView txtPageToolBar = (TextView) v.findViewById(R.id.txtPageToolBar) ;
 
         Fonts = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Kanit-Light.ttf");
+
+        txtPageToolBar.setTypeface(Fonts);
 
         mViewPager = (ViewPager) v.findViewById(R.id.viewPagePortfolio);
         ManualFragment.PagerAdapter pagerAdapter = new ManualFragment.PagerAdapter(getChildFragmentManager(),getContext());
@@ -46,6 +48,17 @@ public class ManualFragment extends Fragment {
 
         TabLayout tabLayout = (TabLayout) v.findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(mViewPager);
+
+        Toolbar toolbar = (Toolbar) v.findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
+
+
 
         for(int i = 0; i < tabLayout.getTabCount(); i++){
             TabLayout.Tab tab = tabLayout.getTabAt(i);

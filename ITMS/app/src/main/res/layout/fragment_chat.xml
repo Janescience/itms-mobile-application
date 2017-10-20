@@ -2,9 +2,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#F2F2F2"
 
     tools:context="system.management.information.itms.ChatFragment">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:contentInsetStart="0dp"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/txtPageToolBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="แชท"
+            android:textSize="20dp"
+            android:gravity="center"/>
+
+    </android.support.v7.widget.Toolbar>
 
 
     <android.support.v7.widget.RecyclerView
@@ -13,6 +34,7 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:textAlignment="viewEnd"
+        android:layout_marginTop="60dp"
         android:layout_marginBottom="60dp"
         >
     </android.support.v7.widget.RecyclerView>
@@ -30,7 +52,7 @@
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
             android:textAlignment="textStart"
-            android:textColor="#FFFFFF"/>
+            android:textColor="#000000"/>
         <Button
             android:id="@+id/btSendChat"
             android:text="Send"
@@ -38,6 +60,4 @@
             android:layout_height="wrap_content"
             />
     </LinearLayout>
-
-
 </FrameLayout>

@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.Arrays;
 
@@ -45,7 +46,6 @@ public class MyIndexManualAdapter  extends RecyclerView.Adapter<MyIndexManualAda
 
     @Override
     public void onBindViewHolder(MyIndexManualAdapter.MyViewHolder holder, int position) {
-        holder.icImage.setImageResource(mImageset[position]);
 
     }
 
@@ -59,10 +59,9 @@ public class MyIndexManualAdapter  extends RecyclerView.Adapter<MyIndexManualAda
 
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public CardView cardView;
-        public ImageView icImage;
         public Integer indexPage,indexTopic;
-        public Button btedit01,btedit02;
-        private Context context;
+        public TextView txtTopic;
+
 
         Typeface Fonts;
 
@@ -76,10 +75,12 @@ public class MyIndexManualAdapter  extends RecyclerView.Adapter<MyIndexManualAda
             Fonts = Typeface.createFromAsset(itemView.getContext().getAssets(), "fonts/Kanit-Light.ttf");
 
             cardView = (CardView) itemView.findViewById(R.id.card_view);
-            icImage = (ImageView) itemView.findViewById(R.id.ic);
+
              itemView.findViewById(R.id.btnIndexEdit01).setOnClickListener(this);
              itemView.findViewById(R.id.btnIndexEdit02).setOnClickListener(this);
+            txtTopic = (TextView) itemView.findViewById(R.id.txtTopic);
 
+            txtTopic.setTypeface(Fonts);
         }
 
         @Override

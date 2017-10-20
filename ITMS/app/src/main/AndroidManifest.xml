@@ -40,7 +40,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BottombarMainActivity"
-            android:label="@string/name_page" />
+            android:label="@string/name_page"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".MainActivity"
             android:label="@string/name_page" />
