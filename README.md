@@ -11,6 +11,7 @@ Information of Technology Management System - Mobile Application <br>
 <img src="https://github.com/Janescience/ItmsAndroidProject/blob/master/ITMS/app/src/main/res/drawable/history_mobile.png">
 <img src="https://github.com/Janescience/ItmsAndroidProject/blob/master/ITMS/app/src/main/res/drawable/chat_mobile.png">
 <img src="https://github.com/Janescience/ItmsAndroidProject/blob/master/ITMS/app/src/main/res/drawable/website_mobile.png">
+<img src="https://github.com/Janescience/ItmsAndroidProject/blob/master/ITMS/app/src/main/res/drawable/menu_mobile.png">
 
 </p>
 
