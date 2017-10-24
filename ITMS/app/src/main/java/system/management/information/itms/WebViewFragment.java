@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
-
+import android.webkit.WebViewClient;
 
 
 /**
@@ -27,14 +27,20 @@ public class WebViewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_web_view, container, false);
-        progressDialog = new ProgressDialog(getActivity());
-        progressDialog.show();
+
         String url = " http://soctech.sut.ac.th/it/webitsut2015/index.php";
         WebView webView = (WebView) rootView.findViewById(R.id.webview);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(url);
-        progressDialog.dismiss();
-        // Inflate the layout for this fragment
+
+        webView.setWebViewClient(new WebViewClient(){
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url){
+                view.loadUrl(url);
+                return true;
+            }
+        });
+
         return rootView;
     }
 

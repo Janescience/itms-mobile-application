@@ -3,6 +3,7 @@ package system.management.information.itms;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -28,6 +29,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 /**
@@ -59,7 +62,10 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
 
         TextView txtSwitch = (TextView) rootview.findViewById(R.id.txtNotify);
 
-        Switch onOffSwitch = (Switch)  rootview.findViewById(R.id.switchNotify);
+        final Switch onOffSwitch = (Switch)  rootview.findViewById(R.id.switchNotify);
+
+        SharedPreferences sharedPrefs = getActivity().getSharedPreferences("system.management.information.itms", MODE_PRIVATE);
+        onOffSwitch.setChecked(sharedPrefs.getBoolean("NotificationEdited", true));
 
         notify.setTypeface(Fonts);
         logout.setTypeface(Fonts);
@@ -67,6 +73,25 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
+        onOffSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onOffSwitch.isChecked())
+                {
+                    FirebaseMessaging.getInstance().subscribeToTopic("news");
+                    SharedPreferences.Editor editor = getActivity().getSharedPreferences("system.management.information.itms", MODE_PRIVATE).edit();
+                    editor.putBoolean("NotificationEdited", true);
+                    editor.commit();
+                }
+                else
+                {
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("news");
+                    SharedPreferences.Editor editor = getActivity().getSharedPreferences("system.management.information.itms", MODE_PRIVATE).edit();
+                    editor.putBoolean("NotificationEdited", false);
+                    editor.commit();
+                }
+            }
+        });
 
         notify.setOnClickListener(new View.OnClickListener() {
             @Override

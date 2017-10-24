@@ -61,14 +61,14 @@ import java.util.Scanner;
 
 public class IndexFragment extends Fragment{
 
-    private FirebaseAuth.AuthStateListener mAuthListener,mAuthListenerUser;
-    private FirebaseAuth mAuth, mAuthUser,firebaseAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseAuth mAuth;
     private DatabaseReference mDatabase, mDatabaseHistory,mDatabaseUser;
     private EditText editTextTopic_1;
     private Button  buttonedit,buttonSave;
     private TextView txtPageToolBar;
     private ProgressDialog progressDialog;
-    private String currentDateTimeString,nameEdit,nameUser;
+    private String currentDateTimeString,nameEdit;
     public  Spinner spinnerPage;
     public Object spinnerTopicPosition,spinnerPagePosition;
     public String txt_spinnerTopic,txt_spinnerPage;
@@ -86,13 +86,14 @@ public class IndexFragment extends Fragment{
     Typeface Fonts;
 
     public IndexFragment() {
-        // Required empty public constructor
+
     }
 
     public void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
     }
+
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -156,17 +157,12 @@ public class IndexFragment extends Fragment{
         });
 
 
-
-
-
         if (getActivity().getIntent().getExtras() != null) {
             for (String key : getActivity().getIntent().getExtras().keySet()) {
                 Object value = getActivity().getIntent().getExtras().get(key);
                 Log.d(TAG, "Key: " + key + " Value: " + value);
             }
         }
-
-
 
 
         buttonedit.setOnClickListener(new View.OnClickListener() {
@@ -209,8 +205,6 @@ public class IndexFragment extends Fragment{
                 Arrays.asList(getResources().getStringArray(R.array.null_array))
         );
         spinner.setAdapter(adapterTopic);
-
-
 
         spinnerPage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -257,7 +251,6 @@ public class IndexFragment extends Fragment{
 
                     mDatabase = FirebaseDatabase.getInstance().getReference().child("Website").child("Index");
                     mDatabaseUser = FirebaseDatabase.getInstance().getReference().child("User");
-                    final FirebaseUser user = firebaseAuth.getCurrentUser();
                     mDatabase.child("Header").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(final DataSnapshot dataSnapshot) {
@@ -302,7 +295,7 @@ public class IndexFragment extends Fragment{
 
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
-
+                            Log.e("", databaseError.getMessage());
                         }
                     });
 
@@ -314,7 +307,7 @@ public class IndexFragment extends Fragment{
 
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
-
+                            Log.e("", databaseError.getMessage());
                         }
                     });
                 }
@@ -386,7 +379,6 @@ public class IndexFragment extends Fragment{
 
         return rootView;
     }
-
 
 
     private void startPosting() {
