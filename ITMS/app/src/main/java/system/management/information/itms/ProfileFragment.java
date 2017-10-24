@@ -1,6 +1,7 @@
 package system.management.information.itms;
 
 import android.app.ProgressDialog;
+import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -10,6 +11,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +31,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.perf.FirebasePerformance;
+import com.google.firebase.perf.metrics.Trace;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -55,6 +59,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private TextView  textEmail,Person,txtPageToolBar;
     private Button btEditImage,btProfile,btEdit,btSave;
     Typeface Fonts;
+
+    Trace myTrace = FirebasePerformance.getInstance().newTrace("image_fetch");
 
 
 
@@ -148,6 +154,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             }
         });
 
+        myTrace.start();
+
         progressDialog = new ProgressDialog(getActivity());
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener(){
@@ -171,7 +179,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
                        @Override
                        public void onCancelled(DatabaseError databaseError) {
-
+                           Log.e("", databaseError.getMessage());
                        }
 
                    });
@@ -195,6 +203,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 });
             }
         };
+
+        myTrace.stop();
 
 
 

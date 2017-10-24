@@ -161,7 +161,7 @@ public class HistoryFragment extends Fragment {
 
         public void setDate(String date){
             TextView post_date = (TextView) mView.findViewById(R.id.post_date);
-            post_date.setText(date);
+            post_date.setText(String.valueOf(date));
             post_date.setTypeface(Fonts);
         }
 
