@@ -28,6 +28,7 @@
         android:id="@+id/text_view_user_alphabet"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:src="@drawable/ic_profile"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="@dimen/margin_avg"
         android:gravity="center"

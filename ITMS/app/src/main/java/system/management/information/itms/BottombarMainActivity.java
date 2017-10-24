@@ -21,6 +21,7 @@ import com.roughike.bottombar.BottomBarTab;
 import com.roughike.bottombar.OnMenuTabClickListener;
 
 import system.management.information.itms.Core.Logout.LogoutPresenter;
+import system.management.information.itms.Ui.Activity.ChatActivity;
 import system.management.information.itms.Ui.Activity.SplashActivity;
 import system.management.information.itms.Ui.Activity.UserListingActivity;
 import system.management.information.itms.Ui.Fragment.UserFragment;
@@ -75,9 +76,9 @@ public class BottombarMainActivity extends ActionBarActivity{
                     HistoryFragment fragment = new HistoryFragment();
                     getSupportFragmentManager().beginTransaction().replace(R.id.frame_bottombar, fragment).commit();
                 }else if(menuItemId == R.id.Chat){
-//                    UserFragment fragment = new UserFragment();
-//                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_bottombar, fragment).commit();
-                    UserListingActivity.startActivity(BottombarMainActivity.this);
+                    UserFragment fragment = new UserFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_bottombar, fragment).commit();
+//                    UserListingActivity.startActivity(BottombarMainActivity.this);
                 }else if(menuItemId == R.id.Website) {
                     WebViewFragment fragment = new WebViewFragment();
                     getSupportFragmentManager().beginTransaction().replace(R.id.frame_bottombar, fragment).commit();
