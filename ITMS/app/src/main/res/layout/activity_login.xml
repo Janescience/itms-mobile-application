@@ -3,12 +3,11 @@
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:background="#4A4A4A"
+    android:background="@color/bg_login"
     app:layout_constraintBottom_toBottomOf="parent"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,8 +45,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/button_login"
-            android:background="#ff3eaff9"
-            android:textColor="#ffffff"
+            android:background="@color/bt_login"
+            android:textColor="@color/white"
             android:text="@string/button_login"
             android:textSize="18sp"
             android:layout_marginTop="16dp"/>
@@ -61,7 +60,7 @@
         android:layout_height="wrap_content"
         android:text="@string/txt_register"
         android:id="@+id/register"
-        android:textColor="#D8D9D9"
+        android:textColor="@color/txt_register"
         android:layout_marginBottom="13dp"
         android:layout_centerInParent="true"
         android:layout_alignParentBottom="true"

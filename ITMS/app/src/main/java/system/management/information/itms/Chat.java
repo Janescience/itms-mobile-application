@@ -13,7 +13,6 @@ public class Chat {
 
     }
 
-
     public Chat(String name, String message, String date){
 
         this.name=name;

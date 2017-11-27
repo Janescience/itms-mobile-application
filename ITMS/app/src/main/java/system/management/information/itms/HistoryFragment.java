@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -33,12 +34,14 @@ public class HistoryFragment extends Fragment {
     private DatabaseReference mDatabase;
     static Typeface Fonts;
     private TextView txtPageToolBar;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
 
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+
     }
 
     @Override
@@ -91,10 +94,14 @@ public class HistoryFragment extends Fragment {
 
         Toolbar toolbar = (Toolbar) rootview.findViewById(R.id.toolbar);
 
-
+        swipeRefreshLayout = (SwipeRefreshLayout) rootview.findViewById(R.id.refresh);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                onStart();
+            }
+        });
         return rootview;
-
-
     }
 
 
@@ -121,7 +128,11 @@ public class HistoryFragment extends Fragment {
 
         };
         mBlogList.setAdapter(firebaseRecyclerAdapter);
+        onRefreshCompleted();
+    }
 
+    private void onRefreshCompleted() {
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     public static class HistoryViewHolder extends RecyclerView.ViewHolder  {
@@ -164,11 +175,7 @@ public class HistoryFragment extends Fragment {
             post_date.setText(String.valueOf(date));
             post_date.setTypeface(Fonts);
         }
-
-
     }
-
-
 }
 
 

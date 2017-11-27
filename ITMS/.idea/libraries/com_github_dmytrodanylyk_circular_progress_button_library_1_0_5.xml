@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="com.github.dmytrodanylyk.circular-progress-button:library-1.0.5">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.0.5.aar/81adf2512bb2ced922988f6ecc6e6972/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.0.5.aar/81adf2512bb2ced922988f6ecc6e6972/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.dmytrodanylyk.circular-progress-button/library/1.0.5/4035487001810dd1fff9089664518d43932a1e92/library-1.0.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -2,10 +2,12 @@ package system.management.information.itms;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.icu.text.DateFormat;
 import android.icu.text.SimpleDateFormat;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -30,10 +32,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -43,6 +50,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,28 +62,36 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.math.BigInteger;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+import static android.app.Activity.RESULT_OK;
+
 
 public class IndexFragment extends Fragment{
 
+    private int CAMERA_REQUEST_CODE = 0;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseAuth mAuth;
-    private DatabaseReference mDatabase, mDatabaseHistory,mDatabaseUser;
-    private EditText editTextTopic_1;
-    private Button  buttonedit,buttonSave;
+    private StorageReference mStorage;
+    private DatabaseReference mDatabase, mDatabaseHistory,mDatabaseUser,mDatabaseInfo;
+    private EditText editTextTopic_1,editTextDetail;
+    private Button  buttonedit,buttonSave,buttonImage,buttoneditDetail,buttonSaveDetail;
     private TextView txtPageToolBar;
     private ProgressDialog progressDialog;
     private String currentDateTimeString,nameEdit;
     public  Spinner spinnerPage;
+    private ImageView imageInfo;
     public Object spinnerTopicPosition,spinnerPagePosition;
     public String txt_spinnerTopic,txt_spinnerPage;
 
+    private ProgressBar progressbar;
     private String currentDate,currentMonth,currentYear,currentTime;
     private String date,time;
     public  Spinner spinner;
@@ -114,15 +133,22 @@ public class IndexFragment extends Fragment{
         final View rootView = inflater.inflate(R.layout.fragment_index, container, false);
         spinner = (Spinner) rootView.findViewById(R.id.spinnerShowEdittext);
         spinnerPage = (Spinner) rootView.findViewById(R.id.spinnerShowSpinner);
+        imageInfo= (ImageView) rootView.findViewById(R.id.imageSpin);
 
 
+        progressbar = (ProgressBar) rootView.findViewById(R.id.progressBar);
+        progressbar.setVisibility(rootView.GONE);
 
 
         editTextTopic_1 = (EditText) rootView.findViewById(R.id.Topic_1);
+        editTextDetail = (EditText) rootView.findViewById(R.id.DetailEdit);
         txtPageToolBar = (TextView) rootView.findViewById(R.id.txtPageToolBar) ;
 
         buttonedit=(Button) rootView.findViewById(R.id.edit);
         buttonSave=(Button) rootView.findViewById(R.id.save);
+        buttoneditDetail=(Button) rootView.findViewById(R.id.editDetail);
+        buttonSaveDetail=(Button) rootView.findViewById(R.id.saveDetail);
+        buttonImage=(Button) rootView.findViewById(R.id.imageEdit);
 
 
         mDatabaseHistory = FirebaseDatabase.getInstance().getReference().child("History");
@@ -136,8 +162,12 @@ public class IndexFragment extends Fragment{
         Fonts = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Kanit-Light.ttf");
 
         editTextTopic_1.setTypeface(Fonts);
+        editTextDetail.setTypeface(Fonts);
         buttonSave.setTypeface(Fonts);
         buttonedit.setTypeface(Fonts);
+        buttonSaveDetail.setTypeface(Fonts);
+        buttoneditDetail.setTypeface(Fonts);
+        buttonImage.setTypeface(Fonts);
         txtPageToolBar.setTypeface(Fonts);
 
 
@@ -164,6 +194,18 @@ public class IndexFragment extends Fragment{
             }
         }
 
+        buttonImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                if(intent.resolveActivity(getActivity().getPackageManager()) != null){
+                    startActivityForResult(Intent.createChooser(intent,"กรุณาเลือกรูป"),CAMERA_REQUEST_CODE);
+                }
+            }
+        });
+
 
         buttonedit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,6 +221,25 @@ public class IndexFragment extends Fragment{
                     buttonSave.setEnabled(false);
                     buttonedit.setText("แก้ไข");
                     buttonedit.setTextColor(Color.BLACK);
+
+                }
+            }
+        });
+
+        buttoneditDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (editTextDetail.isEnabled() == false) {
+                    editTextDetail.setEnabled(true);
+                    buttonSaveDetail.setEnabled(true);
+                    buttoneditDetail.setText("ยกเลิก");
+                    buttoneditDetail.setTextColor(Color.RED);
+
+                } else {
+                    editTextDetail.setEnabled(false);
+                    buttonSaveDetail.setEnabled(false);
+                    buttoneditDetail.setText("แก้ไข");
+                    buttoneditDetail.setTextColor(Color.BLACK);
 
                 }
             }
@@ -232,6 +293,8 @@ public class IndexFragment extends Fragment{
                     );
                     spinner.setAdapter(adapterTopic);
                     buttonedit.setEnabled(false);
+                    buttoneditDetail.setEnabled(false);
+                    buttonImage.setEnabled(false);
                 }
             }
 
@@ -251,6 +314,7 @@ public class IndexFragment extends Fragment{
 
                     mDatabase = FirebaseDatabase.getInstance().getReference().child("Website").child("Index");
                     mDatabaseUser = FirebaseDatabase.getInstance().getReference().child("User");
+                    mDatabaseInfo = FirebaseDatabase.getInstance().getReference().child("Website").child("Index");
                     mDatabase.child("Header").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(final DataSnapshot dataSnapshot) {
@@ -259,33 +323,69 @@ public class IndexFragment extends Fragment{
 
                                     Object txt = spinner.getSelectedItemPosition();
                                     if (txt.equals(1)) {
+                                        progressbar.setVisibility(View.VISIBLE);
+                                        editTextDetail.setVisibility(View.VISIBLE);
+                                        buttonSaveDetail.setVisibility(View.VISIBLE);
+                                        buttoneditDetail.setVisibility(View.VISIBLE);
                                         buttonedit.setEnabled(true);
+                                        buttoneditDetail.setEnabled(true);
+                                        buttonImage.setEnabled(true);
                                         editTextTopic_1.setText(dataSnapshot.child("txtTopic_First").getValue().toString());
-                                        ((ImageView) rootView.findViewById(R.id.imageSpin)).setImageResource(0);
-                                        ((ImageView) rootView.findViewById(R.id.imageSpin)).setImageResource(R.drawable.header_first);
+                                        editTextDetail.setText(dataSnapshot.child("txtDetails_First").getValue().toString());
+                                        Picasso.with(getActivity()).load(Uri.parse(dataSnapshot.child("imageSlide_First").getValue().toString())).into(imageInfo);
+                                        if(imageInfo!=null)
+                                        progressbar.setVisibility(View.GONE);
                                     } else if (txt.equals(2)) {
+                                        progressbar.setVisibility(View.VISIBLE);
+                                        editTextDetail.setVisibility(View.VISIBLE);
+                                        buttonSaveDetail.setVisibility(View.VISIBLE);
+                                        buttoneditDetail.setVisibility(View.VISIBLE);
                                         buttonedit.setEnabled(true);
-                                        editTextTopic_1.setText(dataSnapshot.child("txtDetails_First").getValue().toString());
-                                        ((ImageView) rootView.findViewById(R.id.imageSpin)).setImageResource(0);
-                                        ((ImageView) rootView.findViewById(R.id.imageSpin)).setImageResource(R.drawable.header_first);
-                                    } else if (txt.equals(3)) {
-                                        buttonedit.setEnabled(true);
+                                        buttonImage.setEnabled(true);
                                         editTextTopic_1.setText(dataSnapshot.child("txtTopic_Second").getValue().toString());
-                                        ((ImageView) rootView.findViewById(R.id.imageSpin)).setImageResource(0);
-                                        ((ImageView) rootView.findViewById(R.id.imageSpin)).setImageResource(R.drawable.header_first);
-                                    } else if (txt.equals(4)) {
-                                        buttonedit.setEnabled(true);
-                                        editTextTopic_1.setText(dataSnapshot.child("txtDetails_Second").getValue().toString());
-                                        ((ImageView) rootView.findViewById(R.id.imageSpin)).setImageResource(0);
-                                        ((ImageView) rootView.findViewById(R.id.imageSpin)).setImageResource(R.drawable.header_first);
-                                    }else{
-                                        buttonedit.setEnabled(false);
-                                        buttonSave.setEnabled(false);
-                                        editTextTopic_1.setText("ข้อมูลจากเว็บไซต์");
-                                        ((ImageView) rootView.findViewById(R.id.imageSpin)).setImageResource(0);
-                                        ((ImageView) rootView.findViewById(R.id.imageSpin)).setImageResource(R.drawable.image_icon);
+                                        editTextDetail.setText(dataSnapshot.child("txtDetails_Second").getValue().toString());
+                                        Picasso.with(getActivity()).load(Uri.parse(dataSnapshot.child("imageSlide_Second").getValue().toString())).into(imageInfo);
+                                        if(imageInfo!=null)
+                                        progressbar.setVisibility(View.GONE);
+                                    }else if(txt.equals(3)) {
+                                        progressbar.setVisibility(View.VISIBLE);
+                                        editTextDetail.setText("ข้อมูลจากเว็บไซต์");
+                                        editTextDetail.setVisibility(View.GONE);
+                                        buttonSaveDetail.setVisibility(View.GONE);
+                                        buttoneditDetail.setVisibility(View.GONE);
+                                        mDatabaseInfo.child("Body").child("Info").child("Bachelor-Info").addValueEventListener(new ValueEventListener() {
+
+                                            @Override
+                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                buttonedit.setEnabled(true);
+                                                buttonImage.setEnabled(true);
+                                                editTextTopic_1.setText(dataSnapshot.child("Topic-1").getValue().toString());
+                                                Picasso.with(getActivity()).load(Uri.parse(dataSnapshot.child("Image-1").getValue().toString())).into(imageInfo);
+                                                if(imageInfo!=null)
+                                                    progressbar.setVisibility(View.GONE);
+                                            }
+
+                                            @Override
+                                            public void onCancelled(DatabaseError databaseError) {
+
+                                            }
+                                        });
+                                        }else{
+                                            editTextDetail.setVisibility(View.VISIBLE);
+                                            buttonSaveDetail.setVisibility(View.VISIBLE);
+                                            buttoneditDetail.setVisibility(View.VISIBLE);
+                                            buttonedit.setEnabled(false);
+                                            buttoneditDetail.setEnabled(false);
+                                            buttonSaveDetail.setEnabled(false);
+                                            buttonSave.setEnabled(false);
+                                            buttonImage.setEnabled(false);
+                                            editTextTopic_1.setText("ข้อมูลจากเว็บไซต์");
+                                            editTextDetail.setText("ข้อมูลจากเว็บไซต์");
+                                            ((ImageView) rootView.findViewById(R.id.imageSpin)).setImageResource(0);
+                                            ((ImageView) rootView.findViewById(R.id.imageSpin)).setImageResource(R.drawable.image_icon);
+                                        }
                                     }
-                                }
+
 
                                 public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -298,6 +398,7 @@ public class IndexFragment extends Fragment{
                             Log.e("", databaseError.getMessage());
                         }
                     });
+
 
                     mDatabaseUser.child(firebaseAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
                         @Override
@@ -315,11 +416,45 @@ public class IndexFragment extends Fragment{
                 final DatabaseReference mDatabaseEdit = FirebaseDatabase.getInstance().getReference();
 
 
+                buttonSaveDetail.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        spinnerTopicPosition = spinner.getSelectedItemPosition();
+                        txt_spinnerTopic = spinner.getSelectedItem().toString();
+                        if (spinnerTopicPosition.equals(1)) {
+
+                            FirebaseMessaging.getInstance().unsubscribeFromTopic("news");
+
+                            String EditHeaderDetail = editTextDetail.getText().toString();
+                            mDatabaseEdit.child("Website").child("Index").child("Header").child("txtDetails_First").setValue(EditHeaderDetail);
+                            editTextDetail.setEnabled(false);
+                            Toast.makeText(getActivity(), "แก้ไขข้อมูลสำเร็จ", Toast.LENGTH_SHORT).show();
+
+                            sendWithOtherThread("topic");
+
+
+                        }else if(spinnerTopicPosition.equals(2)){
+
+                            FirebaseMessaging.getInstance().unsubscribeFromTopic("news");
+
+                            String EditHeader = editTextDetail.getText().toString();
+                            mDatabaseEdit.child("Website").child("Index").child("Header").child("txtDetails_Second").setValue(EditHeader);
+                            editTextDetail.setEnabled(false);
+                            Toast.makeText(getActivity(), "แก้ไขข้อมูลสำเร็จ", Toast.LENGTH_SHORT).show();
+
+                            sendWithOtherThread("topic");
+
+                        }
+
+                        final String detail_val = editTextDetail.getText().toString().trim();
+                        startPosting(detail_val);
+                    }
+                });
+
 
                 buttonSave.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
                         spinnerTopicPosition = spinner.getSelectedItemPosition();
                         txt_spinnerTopic = spinner.getSelectedItem().toString();
                         if (spinnerTopicPosition.equals(1)) {
@@ -339,29 +474,7 @@ public class IndexFragment extends Fragment{
                             FirebaseMessaging.getInstance().unsubscribeFromTopic("news");
 
                             String EditHeader = editTextTopic_1.getText().toString();
-                            mDatabaseEdit.child("Website").child("Index").child("Header").child("txtDetails_First").setValue(EditHeader);
-                            editTextTopic_1.setEnabled(false);
-                            Toast.makeText(getActivity(), "แก้ไขข้อมูลสำเร็จ", Toast.LENGTH_SHORT).show();
-
-                            sendWithOtherThread("topic");
-
-                        }else if(spinnerTopicPosition.equals(3)){
-
-                            FirebaseMessaging.getInstance().unsubscribeFromTopic("news");
-
-                            String EditHeader = editTextTopic_1.getText().toString();
                             mDatabaseEdit.child("Website").child("Index").child("Header").child("txtTopic_Second").setValue(EditHeader);
-                            editTextTopic_1.setEnabled(false);
-                            Toast.makeText(getActivity(), "แก้ไขข้อมูลสำเร็จ", Toast.LENGTH_SHORT).show();
-
-                            sendWithOtherThread("topic");
-
-                        }else if(spinnerTopicPosition.equals(4)){
-
-                            FirebaseMessaging.getInstance().unsubscribeFromTopic("news");
-
-                            String EditHeader = editTextTopic_1.getText().toString();
-                            mDatabaseEdit.child("Website").child("Index").child("Header").child("txtDetails_Second").setValue(EditHeader);
                             editTextTopic_1.setEnabled(false);
                             Toast.makeText(getActivity(), "แก้ไขข้อมูลสำเร็จ", Toast.LENGTH_SHORT).show();
 
@@ -369,7 +482,8 @@ public class IndexFragment extends Fragment{
 
                         }
 
-                        startPosting();
+                        final String detail_val = editTextTopic_1.getText().toString().trim();
+                        startPosting(detail_val);
                     }
                 });
 
@@ -380,22 +494,115 @@ public class IndexFragment extends Fragment{
         return rootView;
     }
 
+    public String getRandomString(){
+        SecureRandom random = new SecureRandom();
+        return new BigInteger(130,random).toString(32);
+    }
 
-    private void startPosting() {
+    public void onActivityResult(int requestCode,int resultCode,Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
 
-        final String detail_val = editTextTopic_1.getText().toString().trim();
+        if(requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK) {
+
+            if (mAuth.getCurrentUser() == null)
+                return;
+            progressDialog.setMessage("กำลังอัพโหลดรูปภาพ...");
+            progressDialog.show();
+
+            final Uri uri = data.getData();
+
+            if (uri == null) {
+                progressDialog.dismiss();
+                return;
+            }
+
+            if (mAuth.getCurrentUser() == null)
+                return;
+
+            if (mStorage == null)
+                mStorage = FirebaseStorage.getInstance().getReference();
+
+
+            Object positionSpin = spinner.getSelectedItemPosition();
+
+            DatabaseReference database = null;
+            if (positionSpin.equals(1)) {
+                database = mDatabase.child("Header").child("imageSlide_First");
+            }else if(positionSpin.equals(2)){
+                database = mDatabase.child("Header").child("imageSlide_Second");
+            }else if(positionSpin.equals(3)){
+                database = mDatabaseInfo.child("Body").child("Info").child("Bachelor-Info").child("Image-1");
+            }
+
+
+            final StorageReference filepath = mStorage.child("Photos").child(getRandomString());
+
+
+            final DatabaseReference finalDatabase = database;
+            database.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    String image = dataSnapshot.getValue().toString();
+
+                    if (!image.equals("ยังไม่มีรูป") && !image.isEmpty()) {
+                        Task<Void> task = FirebaseStorage.getInstance().getReferenceFromUrl(image).delete();
+                        task.addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful())
+                                    Toast.makeText(getActivity(), "ลบรูปภาพสำเร็จ", Toast.LENGTH_SHORT).show();
+                                else
+                                    Toast.makeText(getActivity(), "ไม่สามารถลบรูปภาพได้", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+
+                    finalDatabase.removeEventListener(this);
+
+                    filepath.putFile(uri).addOnSuccessListener(getActivity(), new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            progressDialog.dismiss();
+                            Uri dowloadUri = taskSnapshot.getDownloadUrl();
+                            Toast.makeText(getActivity(), "เปลี่ยนรูปภาพสำเร็จ", Toast.LENGTH_SHORT).show();
+                            Picasso.with(getActivity()).load(uri).into(imageInfo);
+                            finalDatabase.setValue(dowloadUri.toString());
+                        }
+                    }).addOnFailureListener(getActivity(), new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
+                            Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+
+        }
+    }
+
+
+    private void startPosting(String detail) {
+
+
         final String topic_val = txt_spinnerTopic;
         final String page_val = txt_spinnerPage;
         final String date_time_val = currentDateTimeString;
 
-        if (!TextUtils.isEmpty(detail_val) && !TextUtils.isEmpty(nameEdit)) {
+        if (!TextUtils.isEmpty(detail) && !TextUtils.isEmpty(nameEdit)) {
             progressDialog.setMessage("Posting to Blog...");
             progressDialog.show();
             DatabaseReference newPost = mDatabaseHistory.push();
             newPost.child("Name").setValue(nameEdit);
             newPost.child("Topic").setValue(topic_val);
             newPost.child("Page").setValue(page_val);
-            newPost.child("Detail").setValue(detail_val);
+            newPost.child("Detail").setValue(detail);
             newPost.child("Date").setValue(date_time_val);
             progressDialog.dismiss();
             buttonSave.setEnabled(false);

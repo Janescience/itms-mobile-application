@@ -26,15 +26,10 @@ public class MyAcademicWorkAdapter extends RecyclerView.Adapter<MyAcademicWorkAd
     public  static String[] mDataset;
     private String[] mTopicset;
 
-
-
     public MyAcademicWorkAdapter(String[] myDataset,String[] myTopicset){
         mDataset = myDataset;
         mTopicset = myTopicset;
-
-
     }
-
 
     @Override
     public MyAcademicWorkAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -42,6 +37,8 @@ public class MyAcademicWorkAdapter extends RecyclerView.Adapter<MyAcademicWorkAd
         MyAcademicWorkAdapter.MyViewHolder vh = new MyAcademicWorkAdapter.MyViewHolder(v);
         return vh;
     }
+
+
 
     @Override
     public void onBindViewHolder(MyAcademicWorkAdapter.MyViewHolder holder, int position) {
@@ -59,7 +56,6 @@ public class MyAcademicWorkAdapter extends RecyclerView.Adapter<MyAcademicWorkAd
     }
 
 
-
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         public CardView cardView;
         public EditText editAcademicText,editResearchText;
@@ -70,12 +66,8 @@ public class MyAcademicWorkAdapter extends RecyclerView.Adapter<MyAcademicWorkAd
         public DatabaseReference mDatabase;
         Typeface Fonts;
 
-
-
-
         public MyViewHolder(final View itemView) {
             super(itemView);
-
 
             Fonts = Typeface.createFromAsset(itemView.getContext().getAssets(),"fonts/Kanit-Light.ttf");
 
@@ -89,6 +81,7 @@ public class MyAcademicWorkAdapter extends RecyclerView.Adapter<MyAcademicWorkAd
             btResearchSave = (Button) itemView.findViewById(R.id.btSaveResearch);
             btResearchEdit = (Button) itemView.findViewById(R.id.btEditResearch);
             topicResearchText = (TextView) itemView.findViewById(R.id.topic_research);
+
 
             editAcademicText.setTypeface(Fonts);
             topicAcademicText.setTypeface(Fonts);
@@ -120,12 +113,12 @@ public class MyAcademicWorkAdapter extends RecyclerView.Adapter<MyAcademicWorkAd
                     if(editResearchText.isEnabled()==false) {
                         editResearchText.setEnabled(true);
                         btResearchSave.setEnabled(true);
-                        btResearchEdit.setText("ยกเลิก");
+                        btResearchEdit.setText(R.string.cancel);
                         btResearchEdit.setTextColor(Color.RED);
                     }else{
                         editResearchText.setEnabled(false);
                         btResearchSave.setEnabled(false);
-                        btResearchEdit.setText("แก้ไข");
+                        btResearchEdit.setText(R.string.edit);
                         btResearchEdit.setTextColor(Color.BLACK);
                     }
                 }
@@ -137,18 +130,18 @@ public class MyAcademicWorkAdapter extends RecyclerView.Adapter<MyAcademicWorkAd
                     if(editAcademicText.isEnabled()==false) {
                         editAcademicText.setEnabled(true);
                         btAcademicSave.setEnabled(true);
-                        btAcademicEdit.setText("ยกเลิก");
+                        btAcademicEdit.setText(R.string.cancel);
                         btAcademicEdit.setTextColor(Color.RED);
                     }else{
                         editAcademicText.setEnabled(false);
                         btAcademicSave.setEnabled(false);
-                        btAcademicEdit.setText("แก้ไข");
+                        btAcademicEdit.setText(R.string.edit);
                         btAcademicEdit.setTextColor(Color.BLACK);
                     }
                 }
             });
 
-
+//          ====================== save data edited to firebase database by user id ===========================
             mAuth = FirebaseAuth.getInstance();
             mAuthListener = new FirebaseAuth.AuthStateListener(){
                 @Override
@@ -160,14 +153,12 @@ public class MyAcademicWorkAdapter extends RecyclerView.Adapter<MyAcademicWorkAd
                         @Override
                         public void onClick(View view) {
 
-
-
                             mDatabase.child(firebaseAuth.getCurrentUser().getUid()).child("academic_work").child("acdemic").setValue(editAcademicText.getText().toString());
-                            Toast.makeText(itemView.getContext(), "แก้ไขข้อมูลประวัติการศึกษาสำเร็จ", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(itemView.getContext(),R.string.history_education_edited, Toast.LENGTH_SHORT).show();
 
                             editAcademicText.setEnabled(false);
                             btAcademicSave.setEnabled(false);
-                            btAcademicEdit.setText("แก้ไข");
+                            btAcademicEdit.setText(R.string.cancel);
                             btAcademicEdit.setTextColor(Color.BLACK);
                         }
                     });
@@ -176,11 +167,11 @@ public class MyAcademicWorkAdapter extends RecyclerView.Adapter<MyAcademicWorkAd
                         @Override
                         public void onClick(View v) {
                             mDatabase.child(firebaseAuth.getCurrentUser().getUid()).child("academic_work").child("research").setValue(editResearchText.getText().toString());
-                            Toast.makeText(itemView.getContext(), "แก้ไขข้อมูลความถนัดเฉพาะด้านสำเร็จ", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(itemView.getContext(), R.string.expertise_edited, Toast.LENGTH_SHORT).show();
 
                             editResearchText.setEnabled(false);
                             btResearchSave.setEnabled(false);
-                            btResearchEdit.setText("แก้ไข");
+                            btResearchEdit.setText(R.string.edit);
                             btResearchEdit.setTextColor(Color.BLACK);
                         }
                     });
@@ -189,8 +180,9 @@ public class MyAcademicWorkAdapter extends RecyclerView.Adapter<MyAcademicWorkAd
 
             mAuth.addAuthStateListener(mAuthListener);
 
-
-
+            if (mAuthListener != null) {
+                mAuth.removeAuthStateListener(mAuthListener);
+            }
         }
     }
 }

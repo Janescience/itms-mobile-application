@@ -42,43 +42,38 @@ public class ChatFragment extends Fragment {
     private String chatName;
     private EditText message;
     private Button send;
+    private int amount;
     private TextView txtPageToolBar;
-
-    private String date, currentDateTimeString;
-
-    private ProgressDialog progressDialog;
-
+    private String currentDateTimeString;
     static Typeface Fonts;
 
     public ChatFragment() {
-        // Required empty public constructor
+
     }
 
     public void onStart() {
         super.onStart();
 
-        FirebaseRecyclerAdapter<Chat, ChatFragment.ChatViewHolder> firebaseRecyclerAdapter = new  FirebaseRecyclerAdapter<Chat, ChatFragment.ChatViewHolder>(
-
+        final FirebaseRecyclerAdapter<Chat, ChatFragment.ChatViewHolder> firebaseRecyclerAdapter = new  FirebaseRecyclerAdapter<Chat, ChatFragment.ChatViewHolder>(
                 Chat.class,
                 R.layout.chat_row,
                 ChatFragment.ChatViewHolder.class,
                 mDatabaseChat
-
         ) {
-            protected void populateViewHolder(ChatFragment.ChatViewHolder viewHolder, Chat model, final int position) {
+            protected void populateViewHolder(ChatFragment.ChatViewHolder viewHolder, Chat model, final  int position) {
                 viewHolder.setName(model.getName());
                 viewHolder.setMessage(model.getMessage());
                 viewHolder.setDate(model.getDate());
                 mChatList.smoothScrollToPosition(position);
-
             }
-
         };
         mChatList.setAdapter(firebaseRecyclerAdapter);
-
-
         mAuth.addAuthStateListener(mAuthListener);
+    }
 
+    public  void onStop(){
+        super.onStop();
+        mAuth.removeAuthStateListener(mAuthListener);
     }
 
     public static class ChatViewHolder extends RecyclerView.ViewHolder {
@@ -88,7 +83,6 @@ public class ChatFragment extends Fragment {
         public ChatViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
-
         }
 
         public void setName(String name) {
@@ -96,7 +90,6 @@ public class ChatFragment extends Fragment {
             chat_name.setText(name);
             chat_name.setTypeface(Fonts);
         }
-
 
         public void setMessage(String message) {
             TextView chat_message = (TextView) mView.findViewById(R.id.chat_text);
@@ -109,6 +102,8 @@ public class ChatFragment extends Fragment {
             chat_date.setText(date);
             chat_date.setTypeface(Fonts);
         }
+
+
     }
 
     @Override
@@ -124,16 +119,15 @@ public class ChatFragment extends Fragment {
         txtPageToolBar = (TextView) rootView.findViewById(R.id.txtPageToolBar) ;
         txtPageToolBar.setTypeface(Fonts);
 
-        Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
-
         currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
 
         mDatabaseChat = FirebaseDatabase.getInstance().getReference().child("Chat");
 
+
         mChatList = (RecyclerView) rootView.findViewById(R.id.chat_list);
         mChatList.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        progressDialog = new ProgressDialog(getActivity());
+
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -163,8 +157,12 @@ public class ChatFragment extends Fragment {
                 message.setText("");
             }
         });
-            // Inflate the layout for this fragment
+
         return rootView;
+    }
+
+    public int getItemCount(){
+        return amount;
     }
 
     private void sendMessage(){

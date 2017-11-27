@@ -2,6 +2,17 @@
     <string name="app_name">ITMS</string>
     <string name="name_page"></string>
 
+    <string name="edit">แก้ไข</string>
+    <string name="save">บันทึก</string>
+    <string name="cancel">ยกเลิก</string>
+    <string name="history_education_edited">แก้ไขข้อมูลประวัติการศึกษาสำเร็จ</string>
+    <string name="expertise_edited">แก้ไขข้อมูลความถนัดเฉพาะด้านสำเร็จ</string>
+    <string name="academic_work">ผลงานวิชาการ</string>
+    <string name="research">งานวิจัย</string>
+    <string name="firstname_lastname">ชื่อ-นามสกุล</string>
+    <string name="numberphone">เบอร์โทรศัพท์</string>
+    <string name="submit">ตกลง</string>
+
     <!--หน้าเข้าสู่ระบบ-->
     <string name="login_title_user">เข้าสู่ระบบ</string>
     <string name="password_title">รหัสผ่าน</string>
@@ -29,14 +40,15 @@
     <string name="complete">บันทึกสำเร็จ</string>
     <string name="error">บันทึกไม่สำเร็จ</string>
     <string name="upload">บันทึก</string>
-
+    <string name="loading">กำลังโหลดข้อมูล</string>
+    <string name="wait">กรุณารอสักครู่...</string>
 
     <string-array name="topic_array">
         <item>เลือกหัวข้อ</item>
-        <item>ข้อความส่วนหัวรูปภาพสไลด์ที่ 1</item>
-        <item>รายละเอียดส่วนหัวรูปภาพสไลด์ที่ 1</item>
-        <item>ข้อความส่วนหัวรูปภาพสไลด์ที่ 2</item>
-        <item>รายละเอียดส่วนหัวรูปภาพสไลด์ที่ 2</item>
+        <item>ข้อความและรูปภาพส่วนหัวรูปภาพสไลด์ที่ 1</item>
+        <item>ข้อความสและรูปภาพ่วนหัวรูปภาพสไลด์ที่ 2</item>
+        <item>ข่าวสารระดับปริญญาตรีเรื่องที่ 1</item>
+        <item>หลักสูตรที่เปิดสอน</item>
     </string-array>
 
     <string-array name="null_array">
@@ -55,11 +67,31 @@
     <string name="subscribe_to_news">SUBSCRIBE TOPIC</string>
     <string name="unsubscribe_to_news">UNSUBSCRIBE TOPIC</string>
     <string name="log_token">LOG TOKEN</string>
-
     <string name="title_activity_post">PostActivity</string>
     <string name="title_activity_bottombar_main">BottombarMainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_chat_main">ChatMainActivity</string>
+    <string name="type_a_message">Type a message...</string>
+
+    <string name="email">Email Id</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="login_register">New user, tap here to register !</string>
+    <string name="register">Register</string>
+
+    <string name="user_successfully_added">User successfully added!</string>
+    <string name="user_unable_to_add">Unable to add user!</string>
+    <string name="adding_user_to_db">Adding user to database.</string>
+
+    <string name="please_wait">Please wait...</string>
+
+    <string name="font_family_roboto_light">sans-serif-thin</string>
+
+    <string name="action_logout">Logout</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="logout">Logout</string>
+    <string name="are_you_sure">Are you sure ?</string>
+
 </resources>

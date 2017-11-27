@@ -3,7 +3,6 @@
 <android.support.v7.widget.CardView
     android:id="@+id/card_view"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_marginTop="15dp"
     android:layout_height="wrap_content"
@@ -12,8 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,15 +49,15 @@
                 android:id="@+id/btSaveAcademic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="บันทึก"
-                android:background="#FFFFFF"
+                android:text="@string/save"
+                android:background="@color/white"
                 android:layout_weight="2"/>
             <Button
                 android:id="@+id/btEditAcademic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="แก้ไข"
-                android:background="#FFFFFF"
+                android:text="@string/edit"
+                android:background="@color/white"
                 android:layout_weight="2"/>
         </LinearLayout>
 
@@ -103,15 +100,15 @@
                 android:id="@+id/btSaveResearch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="บันทึก"
-                android:background="#FFFFFF"
+                android:text="@string/save"
+                android:background="@color/white"
                 android:layout_weight="2"/>
             <Button
                 android:id="@+id/btEditResearch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="แก้ไข"
-                android:background="#FFFFFF"
+                android:text="@string/edit"
+                android:background="@color/white"
                 android:layout_weight="2"/>
         </LinearLayout>
     </LinearLayout>
