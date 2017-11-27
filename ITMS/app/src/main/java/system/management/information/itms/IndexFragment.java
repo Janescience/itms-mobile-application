@@ -370,7 +370,104 @@ public class IndexFragment extends Fragment{
 
                                             }
                                         });
-                                        }else{
+                                        }else if(txt.equals(4)){
+                                        progressbar.setVisibility(View.VISIBLE);
+                                        editTextDetail.setText("ข้อมูลจากเว็บไซต์");
+                                        editTextDetail.setVisibility(View.GONE);
+                                        buttonSaveDetail.setVisibility(View.GONE);
+                                        buttoneditDetail.setVisibility(View.GONE);
+                                        mDatabaseInfo.child("Body").child("Info").child("Bachelor-Info").addValueEventListener(new ValueEventListener() {
+
+                                            @Override
+                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                buttonedit.setEnabled(true);
+                                                buttonImage.setEnabled(true);
+                                                editTextTopic_1.setText(dataSnapshot.child("Topic-2").getValue().toString());
+                                                Picasso.with(getActivity()).load(Uri.parse(dataSnapshot.child("Image-2").getValue().toString())).into(imageInfo);
+                                                if(imageInfo!=null)
+                                                    progressbar.setVisibility(View.GONE);
+                                            }
+
+                                            @Override
+                                            public void onCancelled(DatabaseError databaseError) {
+
+                                            }
+                                        });
+
+                                    }else if(txt.equals(5)){
+                                        progressbar.setVisibility(View.VISIBLE);
+                                        editTextDetail.setText("ข้อมูลจากเว็บไซต์");
+                                        editTextDetail.setVisibility(View.GONE);
+                                        buttonSaveDetail.setVisibility(View.GONE);
+                                        buttoneditDetail.setVisibility(View.GONE);
+                                        mDatabaseInfo.child("Body").child("Info").child("Bachelor-Info").addValueEventListener(new ValueEventListener() {
+
+                                            @Override
+                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                buttonedit.setEnabled(true);
+                                                buttonImage.setEnabled(true);
+                                                editTextTopic_1.setText(dataSnapshot.child("Topic-3").getValue().toString());
+                                                Picasso.with(getActivity()).load(Uri.parse(dataSnapshot.child("Image-3").getValue().toString())).into(imageInfo);
+                                                if(imageInfo!=null)
+                                                    progressbar.setVisibility(View.GONE);
+                                            }
+
+                                            @Override
+                                            public void onCancelled(DatabaseError databaseError) {
+
+                                            }
+                                        });
+
+                                    }else if(txt.equals(6)){
+                                        progressbar.setVisibility(View.VISIBLE);
+                                        editTextDetail.setText("ข้อมูลจากเว็บไซต์");
+                                        editTextDetail.setVisibility(View.GONE);
+                                        buttonSaveDetail.setVisibility(View.GONE);
+                                        buttoneditDetail.setVisibility(View.GONE);
+                                        mDatabaseInfo.child("Body").child("Info").child("Graduate Studies").addValueEventListener(new ValueEventListener() {
+
+                                            @Override
+                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                buttonedit.setEnabled(true);
+                                                buttonImage.setEnabled(true);
+                                                editTextTopic_1.setText(dataSnapshot.child("Topic-1").getValue().toString());
+                                                Picasso.with(getActivity()).load(Uri.parse(dataSnapshot.child("Image-1").getValue().toString())).into(imageInfo);
+                                                if(imageInfo!=null)
+                                                    progressbar.setVisibility(View.GONE);
+                                            }
+
+                                            @Override
+                                            public void onCancelled(DatabaseError databaseError) {
+
+                                            }
+                                        });
+
+                                    }else if(txt.equals(7)){
+                                        progressbar.setVisibility(View.VISIBLE);
+                                        editTextDetail.setText("ข้อมูลจากเว็บไซต์");
+                                        editTextDetail.setVisibility(View.GONE);
+                                        buttonSaveDetail.setVisibility(View.GONE);
+                                        buttoneditDetail.setVisibility(View.GONE);
+                                        mDatabaseInfo.child("Body").child("Info").child("Graduate Studies").addValueEventListener(new ValueEventListener() {
+
+                                            @Override
+                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                buttonedit.setEnabled(true);
+                                                buttonImage.setEnabled(true);
+                                                editTextTopic_1.setText(dataSnapshot.child("Topic-2").getValue().toString());
+                                                Picasso.with(getActivity()).load(Uri.parse(dataSnapshot.child("Image-2").getValue().toString())).into(imageInfo);
+                                                if(imageInfo!=null)
+                                                    progressbar.setVisibility(View.GONE);
+                                            }
+
+                                            @Override
+                                            public void onCancelled(DatabaseError databaseError) {
+
+                                            }
+                                        });
+
+
+                                    }else{
                                             editTextDetail.setVisibility(View.VISIBLE);
                                             buttonSaveDetail.setVisibility(View.VISIBLE);
                                             buttoneditDetail.setVisibility(View.VISIBLE);
@@ -480,7 +577,58 @@ public class IndexFragment extends Fragment{
 
                             sendWithOtherThread("topic");
 
+                        }else if(spinnerTopicPosition.equals(3)){
+
+                            FirebaseMessaging.getInstance().unsubscribeFromTopic("news");
+
+                            String EditHeader = editTextTopic_1.getText().toString();
+                            mDatabaseEdit.child("Website").child("Index").child("Body").child("Info").child("Bachelor-Info").child("Topic-1").setValue(EditHeader);
+                            editTextTopic_1.setEnabled(false);
+                            Toast.makeText(getActivity(), "แก้ไขข้อมูลสำเร็จ", Toast.LENGTH_SHORT).show();
+
+                            sendWithOtherThread("topic");
+                        }else if(spinnerTopicPosition.equals(4)){
+
+                            FirebaseMessaging.getInstance().unsubscribeFromTopic("news");
+
+                            String EditHeader = editTextTopic_1.getText().toString();
+                            mDatabaseEdit.child("Website").child("Index").child("Body").child("Info").child("Bachelor-Info").child("Topic-2").setValue(EditHeader);
+                            editTextTopic_1.setEnabled(false);
+                            Toast.makeText(getActivity(), "แก้ไขข้อมูลสำเร็จ", Toast.LENGTH_SHORT).show();
+
+                            sendWithOtherThread("topic");
+                        }else if(spinnerTopicPosition.equals(5)){
+
+                            FirebaseMessaging.getInstance().unsubscribeFromTopic("news");
+
+                            String EditHeader = editTextTopic_1.getText().toString();
+                            mDatabaseEdit.child("Website").child("Index").child("Body").child("Info").child("Bachelor-Info").child("Topic-3").setValue(EditHeader);
+                            editTextTopic_1.setEnabled(false);
+                            Toast.makeText(getActivity(), "แก้ไขข้อมูลสำเร็จ", Toast.LENGTH_SHORT).show();
+
+                            sendWithOtherThread("topic");
+                        }else if(spinnerTopicPosition.equals(6)){
+
+                            FirebaseMessaging.getInstance().unsubscribeFromTopic("news");
+
+                            String EditHeader = editTextTopic_1.getText().toString();
+                            mDatabaseEdit.child("Website").child("Index").child("Body").child("Info").child("Graduate Studies").child("Topic-1").setValue(EditHeader);
+                            editTextTopic_1.setEnabled(false);
+                            Toast.makeText(getActivity(), "แก้ไขข้อมูลสำเร็จ", Toast.LENGTH_SHORT).show();
+
+                            sendWithOtherThread("topic");
+                        }else if(spinnerTopicPosition.equals(7)){
+
+                            FirebaseMessaging.getInstance().unsubscribeFromTopic("news");
+
+                            String EditHeader = editTextTopic_1.getText().toString();
+                            mDatabaseEdit.child("Website").child("Index").child("Body").child("Info").child("Graduate Studies").child("Topic-2").setValue(EditHeader);
+                            editTextTopic_1.setEnabled(false);
+                            Toast.makeText(getActivity(), "แก้ไขข้อมูลสำเร็จ", Toast.LENGTH_SHORT).show();
+
+                            sendWithOtherThread("topic");
                         }
+
 
                         final String detail_val = editTextTopic_1.getText().toString().trim();
                         startPosting(detail_val);
@@ -532,7 +680,16 @@ public class IndexFragment extends Fragment{
                 database = mDatabase.child("Header").child("imageSlide_Second");
             }else if(positionSpin.equals(3)){
                 database = mDatabaseInfo.child("Body").child("Info").child("Bachelor-Info").child("Image-1");
+            }else if(positionSpin.equals(4)){
+                database = mDatabaseInfo.child("Body").child("Info").child("Bachelor-Info").child("Image-2");
+            }else if(positionSpin.equals(5)){
+                database = mDatabaseInfo.child("Body").child("Info").child("Bachelor-Info").child("Image-3");
+            }else if(positionSpin.equals(6)){
+                database = mDatabaseInfo.child("Body").child("Info").child("Graduate Studies").child("Image-1");
+            }else if(positionSpin.equals(7)){
+                database = mDatabaseInfo.child("Body").child("Info").child("Graduate Studies").child("Image-2");
             }
+
 
 
             final StorageReference filepath = mStorage.child("Photos").child(getRandomString());
@@ -589,7 +746,6 @@ public class IndexFragment extends Fragment{
 
 
     private void startPosting(String detail) {
-
 
         final String topic_val = txt_spinnerTopic;
         final String page_val = txt_spinnerPage;
