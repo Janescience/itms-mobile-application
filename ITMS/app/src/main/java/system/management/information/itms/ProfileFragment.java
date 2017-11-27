@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,14 +59,12 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private EditText  textName,textPhone;
     private TextView  textEmail,Person,txtPageToolBar;
     private Button btEditImage,btProfile,btEdit,btSave;
+    private ProgressBar spinner;
+
     Typeface Fonts;
 
-    Trace myTrace = FirebasePerformance.getInstance().newTrace("image_fetch");
-
-
-
     public ProfileFragment() {
-        // Required empty public constructor
+
     }
 
     public void onStart() {
@@ -76,26 +75,20 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
-
-
-
+        final View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
 
         textName = (EditText) rootView.findViewById(R.id.txtNameShow);
         textPhone = (EditText) rootView.findViewById(R.id.txtPhoneShow);
-
         textEmail = (TextView) rootView.findViewById(R.id.txtEmailShow);
-
         txtPageToolBar = (TextView) rootView.findViewById(R.id.txtPageToolBar) ;
-
         btEditImage = (Button) rootView.findViewById(R.id.btEditImage);
         btProfile = (Button) rootView.findViewById(R.id.btProfile);
         btEdit = (Button) rootView.findViewById(R.id.btEdit);
         btSave = (Button) rootView.findViewById(R.id.btSave);
-
+        spinner = (ProgressBar) rootView.findViewById(R.id.progressBar);
+        spinner.setVisibility(rootView.GONE);
 
         imageProfile =( CircleImageView) rootView.findViewById(R.id.imageUser);
-
         Fonts = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Kanit-Light.ttf");
 
         textName.setTypeface(Fonts);
@@ -107,9 +100,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         btSave.setTypeface(Fonts);
         txtPageToolBar.setTypeface(Fonts);
 
-
         btProfile.setOnClickListener(this);
-
 
         btEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,7 +132,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             }
         });
 
-
         btEditImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -154,8 +144,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             }
         });
 
-        myTrace.start();
-
+        spinner.setVisibility(rootView.VISIBLE);
         progressDialog = new ProgressDialog(getActivity());
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener(){
@@ -175,6 +164,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                             if(!imageUrl.equals("ยังไม่มีรูป") || TextUtils.isEmpty(imageUrl)){
                                 Picasso.with(getActivity()).load(Uri.parse(dataSnapshot.child("image").getValue().toString())).into(imageProfile);
                             }
+                            spinner.setVisibility(rootView.GONE);
                        }
 
                        @Override
@@ -186,7 +176,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
 
                }
-
 
                 btSave.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -203,12 +192,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 });
             }
         };
-
-        myTrace.stop();
-
-
-
-        // Inflate the layout for this fragment
         return rootView;
     }
 
@@ -293,7 +276,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
         }
     }
-
 
     @Override
     public void onClick(View view) {

@@ -31,12 +31,16 @@
        android:layout_marginBottom="10dp"
        android:layout_marginTop="60dp">
 
+       <android.support.v4.widget.SwipeRefreshLayout
+           android:id="@+id/refresh"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+
        <android.support.v7.widget.RecyclerView
            android:layout_width="match_parent"
            android:layout_height="match_parent"
-           android:id="@+id/blog_list">
-
-       </android.support.v7.widget.RecyclerView>
+           android:id="@+id/blog_list"/>
+       </android.support.v4.widget.SwipeRefreshLayout>
    </RelativeLayout>
 
 </FrameLayout>

@@ -1,6 +1,7 @@
 package system.management.information.itms;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,6 +19,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+
 
 /**
  * Created by janescience on 9/8/2560.
@@ -41,15 +44,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_register);
 
         firebaseAuth = FirebaseAuth.getInstance();
-
         mEmail = (EditText) findViewById(R.id.txtEmail);
         mPassword = (EditText) findViewById(R.id.password);
         mName = (EditText) findViewById(R.id.txtName);
         mPhone = (EditText) findViewById(R.id.txtPhone);
         txtRegister = (TextView) findViewById(R.id.register);
-
         mRegister = (Button) findViewById(R.id.button_register);
-
         progressDialog = new ProgressDialog(this);
 
         Fonts = Typeface.createFromAsset(getAssets(),"fonts/Kanit-Light.ttf");
@@ -102,6 +102,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
                                 DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("User");
                                 DatabaseReference currentUser = mDatabase.child(firebaseAuth.getCurrentUser().getUid());
+                                currentUser.child("academic_work").child("academic").setValue("-");
+                                currentUser.child("academic_work").child("research").setValue("-");
+                                currentUser.child("education").child("expertise").setValue("-");
+                                currentUser.child("education").child("his_education").setValue("-");
+                                currentUser.child("work").child("his_work").setValue("-");
+                                currentUser.child("work").child("more_info").setValue("-");
                                 currentUser.child("name").setValue(name);
                                 currentUser.child("telephone").setValue(phone);
                                 currentUser.child("image").setValue("ยังไม่มีรูป");
@@ -120,9 +126,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View view) {
-
         registerUser();
-
-
     }
+
 }

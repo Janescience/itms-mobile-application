@@ -43,6 +43,14 @@
             android:layout_marginTop="20dp"
             app:srcCompat="@drawable/icon_user" />
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
+
         <Button
             android:id="@+id/btEditImage"
             android:layout_width="40dp"
@@ -54,6 +62,7 @@
             android:drawableStart="@drawable/icon_camera"
             android:paddingLeft="8dp"
             android:textColor="#fff" />
+
     </RelativeLayout>
 
     <LinearLayout

@@ -1,7 +1,6 @@
 package system.management.information.itms;
 
 
-import android.app.ProgressDialog;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,17 +11,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,20 +25,21 @@ public class AcademicWorkFragment extends Fragment {
 
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseAuth mAuth;
-    private ProgressDialog progressDialog;
     private DatabaseReference mDatabase;
 
-    public String education;
-    Typeface Fonts;
-
-
     public AcademicWorkFragment() {
-        // Required empty public constructor
+
     }
 
+//  ====== add all user to listener ======
     public void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
+    }
+//  === remove all user in listener to return resource to application ===
+    public void onStop() {
+        super.onStop();
+        mAuth.removeAuthStateListener(mAuthListener);
     }
 
 
@@ -56,35 +51,33 @@ public class AcademicWorkFragment extends Fragment {
         final RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view);
         rv.setHasFixedSize(true);
 
-
-
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(llm);
 
-        Fonts = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Kanit-Light.ttf");
-
-
-        progressDialog = new ProgressDialog(getActivity());
+//      ========== get history and academic data from firebase database by user id ===========
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener(){
             @Override
             public void onAuthStateChanged(@NonNull final FirebaseAuth firebaseAuth) {
                 if(firebaseAuth.getCurrentUser()!= null){
 
+//                  ===== reference object --> User =====
                     mDatabase= FirebaseDatabase.getInstance().getReference().child("User");
-
+//                  ===== get data by current user id in object [User] ====
                     mDatabase.child(firebaseAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener(){
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
 
+//                          ===== send data array to MyAcademicWorkAdapter.java =====
                             MyAcademicWorkAdapter adapter = new MyAcademicWorkAdapter(new String[]{
                                     dataSnapshot.child("academic_work").child("acdemic").getValue().toString(),
                                     dataSnapshot.child("academic_work").child("research").getValue().toString()
 
                             }, new String[]{
-                                    "ผลงานวิชาการ",
-                                    "งานวิจัย"
+                                    getActivity().getString(R.string.academic_work),
+                                    getActivity().getString(R.string.research)
                             });
+//                          ==== set data to recyclerview =====
                             rv.setAdapter(adapter);
                         }
 
@@ -94,14 +87,8 @@ public class AcademicWorkFragment extends Fragment {
                         }
                     });
                 }
-
             }
         };
-
-
-
-        // Inflate the layout for this fragment
         return rootView;
     }
-
 }
