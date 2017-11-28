@@ -4,15 +4,20 @@ package system.management.information.itms.Ui.Fragment;
  * Created by Janescience on 11/24/2017.
  */
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -22,6 +27,7 @@ import system.management.information.itms.Core.Users.GetAll.GetUserPresenter;
 import system.management.information.itms.Models.User;
 import system.management.information.itms.R;
 import system.management.information.itms.Ui.Activity.ChatActivity;
+import system.management.information.itms.Ui.Adapters.UserListingPagerAdapter;
 import system.management.information.itms.Ui.Adapters.UserListingRecyclerAdapter;
 import system.management.information.itms.Utils.ItemClickSupport;
 
@@ -32,6 +38,12 @@ public class UserFragment extends Fragment implements GetUserContract.View, Item
 
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerViewAllUserListing;
+    private TabLayout mTabLayoutUserListing;
+    private ViewPager mViewPagerUserListing;
+
+    Typeface Fonts;
+
+    private TextView txtPageToolBar;
 
     private UserListingRecyclerAdapter mUserListingRecyclerAdapter;
 
@@ -50,23 +62,6 @@ public class UserFragment extends Fragment implements GetUserContract.View, Item
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.fragment_users, container, false);
         bindViews(fragmentView);
-        return fragmentView;
-    }
-
-    private void bindViews(View view) {
-        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
-        mRecyclerViewAllUserListing = (RecyclerView) view.findViewById(R.id.recycler_view_all_user_listing);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        init();
-    }
-
-    private void init() {
-        mGetUsersPresenter = new GetUserPresenter(this);
-        getUsers();
         mSwipeRefreshLayout.post(new Runnable() {
             @Override
             public void run() {
@@ -78,20 +73,31 @@ public class UserFragment extends Fragment implements GetUserContract.View, Item
                 .setOnItemClickListener(this);
 
         mSwipeRefreshLayout.setOnRefreshListener(this);
+        // set the view pager adapter
+        UserListingPagerAdapter userListingPagerAdapter = new UserListingPagerAdapter(getChildFragmentManager());
+        mViewPagerUserListing.setAdapter(userListingPagerAdapter);
+
+        // attach tab layout with view pager
+        mTabLayoutUserListing.setupWithViewPager(mViewPagerUserListing);
+
+        mGetUsersPresenter = new GetUserPresenter(this);
+        mGetUsersPresenter.getAllUsers();
+        return fragmentView;
     }
 
-    @Override
-    public void onRefresh() {
-        getUsers();
+    private void bindViews(View view) {
+        Fonts = Typeface.createFromAsset(getActivity().getAssets(),"fonts/Kanit-Light.ttf");
+
+        mTabLayoutUserListing = (TabLayout) view.findViewById(R.id.tab_layout_user_listing);
+        mViewPagerUserListing = (ViewPager) view.findViewById(R.id.view_pager_user_listing);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
+        mRecyclerViewAllUserListing = (RecyclerView) view.findViewById(R.id.recycler_view_all_user_listing);
+        txtPageToolBar = (TextView) view.findViewById(R.id.txtPageToolBar) ;
+
+        txtPageToolBar.setTypeface(Fonts);
     }
 
-    private void getUsers() {
-        if (TextUtils.equals(getArguments().getString(ARG_TYPE), TYPE_CHATS)) {
 
-        } else if (TextUtils.equals(getArguments().getString(ARG_TYPE), TYPE_ALL)) {
-            mGetUsersPresenter.getAllUsers();
-        }
-    }
 
     @Override
     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
@@ -133,5 +139,10 @@ public class UserFragment extends Fragment implements GetUserContract.View, Item
     @Override
     public void onGetChatUsersFailure(String message) {
 
+    }
+
+    @Override
+    public void onRefresh() {
+        mGetUsersPresenter.getAllUsers();
     }
 }

@@ -1,5 +1,6 @@
 package system.management.information.itms;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -17,16 +18,21 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import system.management.information.itms.Core.Registeration.RegisterContract;
+import system.management.information.itms.Core.Registeration.RegisterPresenter;
+import system.management.information.itms.Core.Users.Add.AddUserContract;
+import system.management.information.itms.Core.Users.Add.AddUserPresenter;
 
 
 /**
  * Created by janescience on 9/8/2560.
  */
 
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener  {
 
     private EditText mName,mEmail,mPassword,mPhone;
     private Button mRegister;
@@ -51,6 +57,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         txtRegister = (TextView) findViewById(R.id.register);
         mRegister = (Button) findViewById(R.id.button_register);
         progressDialog = new ProgressDialog(this);
+
+
 
         Fonts = Typeface.createFromAsset(getAssets(),"fonts/Kanit-Light.ttf");
 
@@ -111,6 +119,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                 currentUser.child("name").setValue(name);
                                 currentUser.child("telephone").setValue(phone);
                                 currentUser.child("image").setValue("ยังไม่มีรูป");
+                                currentUser.child("uid").setValue(firebaseAuth.getCurrentUser().getUid());
+
+                                
                                 Toast.makeText(RegisterActivity.this,"ลงทะเบียนสำเร็จ",Toast.LENGTH_SHORT).show();
                             }else{
                                 Toast.makeText(RegisterActivity.this,"ไม่สามารถลงทะเบียนได้ กรุณาลองอีกครั้ง",Toast.LENGTH_SHORT).show();
@@ -128,5 +139,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         registerUser();
     }
+
 
 }
