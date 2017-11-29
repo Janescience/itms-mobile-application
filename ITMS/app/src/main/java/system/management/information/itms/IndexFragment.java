@@ -82,20 +82,20 @@ public class IndexFragment extends Fragment{
     private StorageReference mStorage;
     private DatabaseReference mDatabase, mDatabaseHistory,mDatabaseUser,mDatabaseInfo;
     private EditText editTextTopic_1,editTextDetail;
-    private Button  buttonedit,buttonSave,buttonImage,buttoneditDetail,buttonSaveDetail;
+    private Button  buttonedit,buttonSave,buttonImage,buttoneditDetail,buttonSaveDetail,buttonImage_master,buttonImage_bachelor,buttonImage_doctorate;
     private TextView txtPageToolBar;
     private ProgressDialog progressDialog;
     private String currentDateTimeString,nameEdit;
     public  Spinner spinnerPage;
-    private ImageView imageInfo;
+    private ImageView imageInfo,Image_master,Image_bachelor,Image_doctorate;
     public Object spinnerTopicPosition,spinnerPagePosition;
     public String txt_spinnerTopic,txt_spinnerPage;
 
-    private ProgressBar progressbar;
+    private ProgressBar progressbar,progressBar_bachelor,progressBar_master,progressBar_doctorate;
     private String currentDate,currentMonth,currentYear,currentTime;
     private String date,time;
     public  Spinner spinner;
-    private Integer indexSpinnerPage,indexSpinnerTopic;
+    private Integer indexSpinnerPage,indexSpinnerTopic,number;
 
     private static final String AUTH_KEY="key=AAAALVRxPuo:APA91bEVQA6g8xJLelUeh6Cr5G-cDh2ZwA7qtayoNeax7Q3A__I_t5ICpvp5cU9mX72UQKAQrWmNtmTgm74RILQZAeJ8TpGqcnWrh-qKml_jfSDkoicY95dgwFbL1Z6grn0kaP35IpbZ";
 
@@ -138,6 +138,12 @@ public class IndexFragment extends Fragment{
 
         progressbar = (ProgressBar) rootView.findViewById(R.id.progressBar);
         progressbar.setVisibility(rootView.GONE);
+        progressBar_bachelor = (ProgressBar) rootView.findViewById(R.id.progressBar_bachelor);
+        progressBar_bachelor.setVisibility(rootView.GONE);
+        progressBar_master = (ProgressBar) rootView.findViewById(R.id.progressBar_master);
+        progressBar_master.setVisibility(rootView.GONE);
+        progressBar_doctorate = (ProgressBar) rootView.findViewById(R.id.progressBar_doctorate);
+        progressBar_doctorate.setVisibility(rootView.GONE);
 
 
         editTextTopic_1 = (EditText) rootView.findViewById(R.id.Topic_1);
@@ -149,6 +155,14 @@ public class IndexFragment extends Fragment{
         buttoneditDetail=(Button) rootView.findViewById(R.id.editDetail);
         buttonSaveDetail=(Button) rootView.findViewById(R.id.saveDetail);
         buttonImage=(Button) rootView.findViewById(R.id.imageEdit);
+
+        buttonImage_bachelor=(Button) rootView.findViewById(R.id.imageEdit_bachelor);
+        buttonImage_master=(Button) rootView.findViewById(R.id.imageEdit_master);
+        buttonImage_doctorate=(Button) rootView.findViewById(R.id.imageEdit_doctorate);
+
+        Image_bachelor=(ImageView) rootView.findViewById(R.id.image_bachelor);
+        Image_master=(ImageView) rootView.findViewById(R.id.image_master);
+        Image_doctorate=(ImageView) rootView.findViewById(R.id.image_doctorate);
 
 
         mDatabaseHistory = FirebaseDatabase.getInstance().getReference().child("History");
@@ -169,6 +183,14 @@ public class IndexFragment extends Fragment{
         buttoneditDetail.setTypeface(Fonts);
         buttonImage.setTypeface(Fonts);
         txtPageToolBar.setTypeface(Fonts);
+
+
+        buttonImage_bachelor.setVisibility(View.GONE);
+        buttonImage_master.setVisibility(View.GONE);
+        buttonImage_doctorate.setVisibility(View.GONE);
+        Image_bachelor.setVisibility(View.GONE);
+        Image_master.setVisibility(View.GONE);
+        Image_doctorate.setVisibility(View.GONE);
 
 
         final Bundle bundle = this.getArguments();
@@ -197,6 +219,46 @@ public class IndexFragment extends Fragment{
         buttonImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                if(intent.resolveActivity(getActivity().getPackageManager()) != null){
+                    startActivityForResult(Intent.createChooser(intent,"กรุณาเลือกรูป"),CAMERA_REQUEST_CODE);
+                }
+            }
+        });
+
+        buttonImage_bachelor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                number = 1;
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                if(intent.resolveActivity(getActivity().getPackageManager()) != null){
+                    startActivityForResult(Intent.createChooser(intent,"กรุณาเลือกรูป"),CAMERA_REQUEST_CODE);
+                }
+
+            }
+        });
+
+        buttonImage_master.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                number = 2;
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                if(intent.resolveActivity(getActivity().getPackageManager()) != null){
+                    startActivityForResult(Intent.createChooser(intent,"กรุณาเลือกรูป"),CAMERA_REQUEST_CODE);
+                }
+            }
+        });
+
+        buttonImage_doctorate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                number = 3;
                 Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -327,6 +389,17 @@ public class IndexFragment extends Fragment{
                                         editTextDetail.setVisibility(View.VISIBLE);
                                         buttonSaveDetail.setVisibility(View.VISIBLE);
                                         buttoneditDetail.setVisibility(View.VISIBLE);
+                                        editTextTopic_1.setVisibility(View.VISIBLE);
+                                        buttonSave.setVisibility(View.VISIBLE);
+                                        buttonedit.setVisibility(View.VISIBLE);
+                                        imageInfo.setVisibility(View.VISIBLE);
+                                        buttonImage.setVisibility(View.VISIBLE);
+                                        buttonImage_bachelor.setVisibility(View.GONE);
+                                        buttonImage_master.setVisibility(View.GONE);
+                                        buttonImage_doctorate.setVisibility(View.GONE);
+                                        Image_bachelor.setVisibility(View.GONE);
+                                        Image_master.setVisibility(View.GONE);
+                                        Image_doctorate.setVisibility(View.GONE);
                                         buttonedit.setEnabled(true);
                                         buttoneditDetail.setEnabled(true);
                                         buttonImage.setEnabled(true);
@@ -336,10 +409,21 @@ public class IndexFragment extends Fragment{
                                         if(imageInfo!=null)
                                         progressbar.setVisibility(View.GONE);
                                     } else if (txt.equals(2)) {
+                                        editTextTopic_1.setVisibility(View.VISIBLE);
+                                        buttonSave.setVisibility(View.VISIBLE);
+                                        buttonedit.setVisibility(View.VISIBLE);
+                                        imageInfo.setVisibility(View.VISIBLE);
+                                        buttonImage.setVisibility(View.VISIBLE);
                                         progressbar.setVisibility(View.VISIBLE);
                                         editTextDetail.setVisibility(View.VISIBLE);
                                         buttonSaveDetail.setVisibility(View.VISIBLE);
                                         buttoneditDetail.setVisibility(View.VISIBLE);
+                                        buttonImage_bachelor.setVisibility(View.GONE);
+                                        buttonImage_master.setVisibility(View.GONE);
+                                        buttonImage_doctorate.setVisibility(View.GONE);
+                                        Image_bachelor.setVisibility(View.GONE);
+                                        Image_master.setVisibility(View.GONE);
+                                        Image_doctorate.setVisibility(View.GONE);
                                         buttonedit.setEnabled(true);
                                         buttonImage.setEnabled(true);
                                         editTextTopic_1.setText(dataSnapshot.child("txtTopic_Second").getValue().toString());
@@ -348,11 +432,23 @@ public class IndexFragment extends Fragment{
                                         if(imageInfo!=null)
                                         progressbar.setVisibility(View.GONE);
                                     }else if(txt.equals(3)) {
+
+                                        editTextTopic_1.setVisibility(View.VISIBLE);
+                                        buttonSave.setVisibility(View.VISIBLE);
+                                        buttonedit.setVisibility(View.VISIBLE);
+                                        imageInfo.setVisibility(View.VISIBLE);
+                                        buttonImage.setVisibility(View.VISIBLE);
                                         progressbar.setVisibility(View.VISIBLE);
                                         editTextDetail.setText("ข้อมูลจากเว็บไซต์");
                                         editTextDetail.setVisibility(View.GONE);
                                         buttonSaveDetail.setVisibility(View.GONE);
                                         buttoneditDetail.setVisibility(View.GONE);
+                                        buttonImage_bachelor.setVisibility(View.GONE);
+                                        buttonImage_master.setVisibility(View.GONE);
+                                        buttonImage_doctorate.setVisibility(View.GONE);
+                                        Image_bachelor.setVisibility(View.GONE);
+                                        Image_master.setVisibility(View.GONE);
+                                        Image_doctorate.setVisibility(View.GONE);
                                         mDatabaseInfo.child("Body").child("Info").child("Bachelor-Info").addValueEventListener(new ValueEventListener() {
 
                                             @Override
@@ -371,11 +467,22 @@ public class IndexFragment extends Fragment{
                                             }
                                         });
                                         }else if(txt.equals(4)){
+                                        editTextTopic_1.setVisibility(View.VISIBLE);
+                                        buttonSave.setVisibility(View.VISIBLE);
+                                        buttonedit.setVisibility(View.VISIBLE);
+                                        imageInfo.setVisibility(View.VISIBLE);
+                                        buttonImage.setVisibility(View.VISIBLE);
                                         progressbar.setVisibility(View.VISIBLE);
                                         editTextDetail.setText("ข้อมูลจากเว็บไซต์");
                                         editTextDetail.setVisibility(View.GONE);
                                         buttonSaveDetail.setVisibility(View.GONE);
                                         buttoneditDetail.setVisibility(View.GONE);
+                                        buttonImage_bachelor.setVisibility(View.GONE);
+                                        buttonImage_master.setVisibility(View.GONE);
+                                        buttonImage_doctorate.setVisibility(View.GONE);
+                                        Image_bachelor.setVisibility(View.GONE);
+                                        Image_master.setVisibility(View.GONE);
+                                        Image_doctorate.setVisibility(View.GONE);
                                         mDatabaseInfo.child("Body").child("Info").child("Bachelor-Info").addValueEventListener(new ValueEventListener() {
 
                                             @Override
@@ -395,11 +502,22 @@ public class IndexFragment extends Fragment{
                                         });
 
                                     }else if(txt.equals(5)){
+                                        editTextTopic_1.setVisibility(View.VISIBLE);
+                                        buttonSave.setVisibility(View.VISIBLE);
+                                        buttonedit.setVisibility(View.VISIBLE);
+                                        imageInfo.setVisibility(View.VISIBLE);
+                                        buttonImage.setVisibility(View.VISIBLE);
                                         progressbar.setVisibility(View.VISIBLE);
                                         editTextDetail.setText("ข้อมูลจากเว็บไซต์");
                                         editTextDetail.setVisibility(View.GONE);
                                         buttonSaveDetail.setVisibility(View.GONE);
                                         buttoneditDetail.setVisibility(View.GONE);
+                                        buttonImage_bachelor.setVisibility(View.GONE);
+                                        buttonImage_master.setVisibility(View.GONE);
+                                        buttonImage_doctorate.setVisibility(View.GONE);
+                                        Image_bachelor.setVisibility(View.GONE);
+                                        Image_master.setVisibility(View.GONE);
+                                        Image_doctorate.setVisibility(View.GONE);
                                         mDatabaseInfo.child("Body").child("Info").child("Bachelor-Info").addValueEventListener(new ValueEventListener() {
 
                                             @Override
@@ -419,11 +537,22 @@ public class IndexFragment extends Fragment{
                                         });
 
                                     }else if(txt.equals(6)){
+                                        editTextTopic_1.setVisibility(View.VISIBLE);
+                                        buttonSave.setVisibility(View.VISIBLE);
+                                        buttonedit.setVisibility(View.VISIBLE);
+                                        imageInfo.setVisibility(View.VISIBLE);
+                                        buttonImage.setVisibility(View.VISIBLE);
                                         progressbar.setVisibility(View.VISIBLE);
                                         editTextDetail.setText("ข้อมูลจากเว็บไซต์");
                                         editTextDetail.setVisibility(View.GONE);
                                         buttonSaveDetail.setVisibility(View.GONE);
                                         buttoneditDetail.setVisibility(View.GONE);
+                                        buttonImage_bachelor.setVisibility(View.GONE);
+                                        buttonImage_master.setVisibility(View.GONE);
+                                        buttonImage_doctorate.setVisibility(View.GONE);
+                                        Image_bachelor.setVisibility(View.GONE);
+                                        Image_master.setVisibility(View.GONE);
+                                        Image_doctorate.setVisibility(View.GONE);
                                         mDatabaseInfo.child("Body").child("Info").child("Graduate Studies").addValueEventListener(new ValueEventListener() {
 
                                             @Override
@@ -443,11 +572,22 @@ public class IndexFragment extends Fragment{
                                         });
 
                                     }else if(txt.equals(7)){
+                                        editTextTopic_1.setVisibility(View.VISIBLE);
+                                        buttonSave.setVisibility(View.VISIBLE);
+                                        buttonedit.setVisibility(View.VISIBLE);
+                                        imageInfo.setVisibility(View.VISIBLE);
+                                        buttonImage.setVisibility(View.VISIBLE);
                                         progressbar.setVisibility(View.VISIBLE);
                                         editTextDetail.setText("ข้อมูลจากเว็บไซต์");
                                         editTextDetail.setVisibility(View.GONE);
                                         buttonSaveDetail.setVisibility(View.GONE);
                                         buttoneditDetail.setVisibility(View.GONE);
+                                        buttonImage_bachelor.setVisibility(View.GONE);
+                                        buttonImage_master.setVisibility(View.GONE);
+                                        buttonImage_doctorate.setVisibility(View.GONE);
+                                        Image_bachelor.setVisibility(View.GONE);
+                                        Image_master.setVisibility(View.GONE);
+                                        Image_doctorate.setVisibility(View.GONE);
                                         mDatabaseInfo.child("Body").child("Info").child("Graduate Studies").addValueEventListener(new ValueEventListener() {
 
                                             @Override
@@ -466,11 +606,64 @@ public class IndexFragment extends Fragment{
                                             }
                                         });
 
+                                    }else if(txt.equals(8)){
+
+                                        buttonImage_bachelor.setVisibility(View.VISIBLE);
+                                        buttonImage_master.setVisibility(View.VISIBLE);
+                                        buttonImage_doctorate.setVisibility(View.VISIBLE);
+                                        Image_bachelor.setVisibility(View.VISIBLE);
+                                        Image_master.setVisibility(View.VISIBLE);
+                                        Image_doctorate.setVisibility(View.VISIBLE);
+                                        progressBar_bachelor.setVisibility(View.VISIBLE);
+                                        progressBar_master.setVisibility(View.VISIBLE);
+                                        progressBar_doctorate.setVisibility(View.VISIBLE);
+                                        editTextTopic_1.setVisibility(View.GONE);
+                                        editTextDetail.setVisibility(View.GONE);
+                                        buttonSave.setVisibility(View.GONE);
+                                        buttonedit.setVisibility(View.GONE);
+                                        buttoneditDetail.setVisibility(View.GONE);
+                                        buttonSaveDetail.setVisibility(View.GONE);
+                                        imageInfo.setVisibility(View.GONE);
+                                        buttonImage.setVisibility(View.GONE);
+
+
+
+                                        mDatabaseInfo.child("Body").child("Course").addValueEventListener(new ValueEventListener() {
+
+                                            @Override
+                                            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                                buttonImage_bachelor.setEnabled(true);
+                                                buttonImage_master.setEnabled(true);
+                                                buttonImage_doctorate.setEnabled(true);
+
+
+
+                                                Picasso.with(getActivity()).load(Uri.parse(dataSnapshot.child("image1").getValue().toString())).into(Image_bachelor);
+                                                if(Image_bachelor!=null)
+                                                    progressBar_bachelor.setVisibility(View.GONE);
+
+                                                Picasso.with(getActivity()).load(Uri.parse(dataSnapshot.child("image2").getValue().toString())).into(Image_master);
+                                                if(Image_master!=null)
+                                                    progressBar_master.setVisibility(View.GONE);
+
+                                                Picasso.with(getActivity()).load(Uri.parse(dataSnapshot.child("image3").getValue().toString())).into(Image_doctorate);
+                                                if(Image_doctorate!=null)
+                                                    progressBar_doctorate.setVisibility(View.GONE);
+                                            }
+
+                                            @Override
+                                            public void onCancelled(DatabaseError databaseError) {
+
+                                            }
+                                        });
+
 
                                     }else{
                                             editTextDetail.setVisibility(View.VISIBLE);
                                             buttonSaveDetail.setVisibility(View.VISIBLE);
                                             buttoneditDetail.setVisibility(View.VISIBLE);
+
                                             buttonedit.setEnabled(false);
                                             buttoneditDetail.setEnabled(false);
                                             buttonSaveDetail.setEnabled(false);
@@ -627,6 +820,8 @@ public class IndexFragment extends Fragment{
                             Toast.makeText(getActivity(), "แก้ไขข้อมูลสำเร็จ", Toast.LENGTH_SHORT).show();
 
                             sendWithOtherThread("topic");
+
+
                         }
 
 
@@ -688,6 +883,14 @@ public class IndexFragment extends Fragment{
                 database = mDatabaseInfo.child("Body").child("Info").child("Graduate Studies").child("Image-1");
             }else if(positionSpin.equals(7)){
                 database = mDatabaseInfo.child("Body").child("Info").child("Graduate Studies").child("Image-2");
+            }else if(positionSpin.equals(8)){
+                if(number == 1){
+                    database = mDatabaseInfo.child("Body").child("Course").child("image1");
+                }else if(number == 2){
+                    database = mDatabaseInfo.child("Body").child("Course").child("image2");
+                }else if(number == 3){
+                    database = mDatabaseInfo.child("Body").child("Course").child("image3");
+                }
             }
 
 

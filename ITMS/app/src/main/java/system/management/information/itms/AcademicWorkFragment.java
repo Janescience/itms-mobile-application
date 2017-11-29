@@ -70,7 +70,7 @@ public class AcademicWorkFragment extends Fragment {
 
 //                          ===== send data array to MyAcademicWorkAdapter.java =====
                             MyAcademicWorkAdapter adapter = new MyAcademicWorkAdapter(new String[]{
-                                    dataSnapshot.child("academic_work").child("acdemic").getValue().toString(),
+                                    dataSnapshot.child("academic_work").child("academic").getValue().toString(),
                                     dataSnapshot.child("academic_work").child("research").getValue().toString()
 
                             }, new String[]{
