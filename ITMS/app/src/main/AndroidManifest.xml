@@ -19,7 +19,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Ui.Activity.UserListingActivity"
             android:label="@string/app_name"
@@ -51,7 +50,9 @@
         <activity
             android:name=".LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-
+        <activity
+            android:name=".CheckLoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".RegisterActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -60,9 +61,12 @@
             android:label="@string/name_page"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".BottombarUserMainActivity"
+            android:label="@string/name_page"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".MainActivity"
             android:label="@string/name_page" />
-
     </application>
 
 </manifest>

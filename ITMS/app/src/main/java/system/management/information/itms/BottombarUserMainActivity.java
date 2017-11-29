@@ -2,46 +2,31 @@ package system.management.information.itms;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
-import android.os.Bundle;
 import android.support.annotation.IdRes;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
-
-import android.support.v7.widget.Toolbar;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.BottomBarBadge;
-import com.roughike.bottombar.BottomBarTab;
 import com.roughike.bottombar.OnMenuTabClickListener;
 
-import system.management.information.itms.Core.Logout.LogoutPresenter;
-import system.management.information.itms.Ui.Activity.ChatActivity;
-import system.management.information.itms.Ui.Activity.SplashActivity;
 import system.management.information.itms.Ui.Activity.UserListingActivity;
 import system.management.information.itms.Ui.Fragment.UserFragment;
 
-/**
- * Created by janescience on 28/8/2560.
- */
+public class BottombarUserMainActivity extends ActionBarActivity {
 
-public class BottombarMainActivity extends ActionBarActivity{
-
-    BottomBar mBottombar;
+    private BottomBar mBottombar;
     FirebaseAuth firebaseAuth;
-    private ChatFragment chatFragment;
 
 
-
-    protected  void  onCreate(Bundle saveInstanceState){
-        super.onCreate(saveInstanceState);
-        setContentView(R.layout.activity_bottombar_main);
-
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_bottombar_user_main);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -50,31 +35,25 @@ public class BottombarMainActivity extends ActionBarActivity{
             startActivity(new Intent(this, LoginActivity.class));
         }
 
-        mBottombar = BottomBar.attach(this,saveInstanceState);
+        mBottombar = BottomBar.attach(this,savedInstanceState);
         mBottombar.useDarkTheme();
         mBottombar.useFixedMode();
-        mBottombar.setItemsFromMenu(R.menu.bottombar_menu, new OnMenuTabClickListener() {
+        mBottombar.setItemsFromMenu(R.menu.bottombar_user_menu, new OnMenuTabClickListener() {
             @Override
             public void onMenuTabSelected(@IdRes int menuItemId) {
 
                 if(menuItemId == R.id.Home ){
                     IndexFragment fragment = new IndexFragment();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_bottombar, fragment).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_user_bottombar, fragment).commit();
                 }else if(menuItemId == R.id.Profile){
                     ProfileFragment fragment = new ProfileFragment();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_bottombar, fragment).commit();
-                }else if(menuItemId == R.id.History){
-                    HistoryFragment fragment = new HistoryFragment();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_bottombar, fragment).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_user_bottombar, fragment).commit();
                 }else if(menuItemId == R.id.Chat){
                     UserFragment fragment = new UserFragment();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_bottombar, fragment).commit();
-                }else if(menuItemId == R.id.Website) {
-                    WebViewFragment fragment = new WebViewFragment();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_bottombar, fragment).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_user_bottombar, fragment).commit();
                 }else if(menuItemId == R.id.Menu){
                     MenuFragment fragment = new MenuFragment();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_bottombar, fragment).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_user_bottombar, fragment).commit();
 
                 }
             }
@@ -87,13 +66,6 @@ public class BottombarMainActivity extends ActionBarActivity{
         });
 
 
-        chatFragment = new ChatFragment();
-        int amount = chatFragment.getItemCount();
-
-
-        BottomBarBadge unread;
-        unread = mBottombar.makeBadgeForTabAt(3,"#0174DF",amount);
-        unread.show();
 
     }
 
@@ -132,4 +104,5 @@ public class BottombarMainActivity extends ActionBarActivity{
 
         return super.onOptionsItemSelected(item);
     }
+
 }
