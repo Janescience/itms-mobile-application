@@ -182,7 +182,129 @@
             android:layout_gravity="center" />
 
     </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="0dp">
+
+            <ImageView
+                android:id="@+id/image_bachelor"
+                android:paddingTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@drawable/image_icon"
+                android:layout_gravity="center"
+                android:background="#FFFFFF"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar_bachelor"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center" />
+
+            <Button
+                android:id="@+id/imageEdit_bachelor"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignStart="@+id/imageUser"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="108dp"
+                android:layout_gravity="center"
+                android:background="@drawable/round_button"
+                android:drawableStart="@drawable/icon_camera"
+                android:paddingLeft="8dp"
+                android:textColor="#fff" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="0dp">
+
+            <ImageView
+                android:id="@+id/image_master"
+                android:paddingTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@drawable/image_icon"
+                android:layout_gravity="center"
+                android:background="#FFFFFF"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar_master"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center" />
+
+            <Button
+                android:id="@+id/imageEdit_master"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignStart="@+id/imageUser"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="108dp"
+                android:layout_gravity="center"
+                android:background="@drawable/round_button"
+                android:drawableStart="@drawable/icon_camera"
+                android:paddingLeft="8dp"
+                android:textColor="#fff" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="0dp">
+
+            <ImageView
+                android:id="@+id/image_doctorate"
+                android:paddingTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@drawable/image_icon"
+                android:layout_gravity="center"
+                android:background="#FFFFFF"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar_doctorate"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center" />
+
+            <Button
+                android:id="@+id/imageEdit_doctorate"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignStart="@+id/imageUser"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="108dp"
+                android:layout_gravity="center"
+                android:background="@drawable/round_button"
+                android:drawableStart="@drawable/icon_camera"
+                android:paddingLeft="8dp"
+                android:textColor="#fff" />
+
+        </RelativeLayout>
+
 </LinearLayout>
+
 
     <Button
         android:id="@+id/imageEdit"
