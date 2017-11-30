@@ -1,16 +1,21 @@
 package system.management.information.itms;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ClipData;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.text.InputType;
 import android.text.TextUtils;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,7 +63,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private CircleImageView imageProfile;
     private EditText  textName,textPhone;
     private TextView  textEmail,Person,txtPageToolBar;
-    private Button btEditImage,btProfile,btEdit,btSave;
+    private Button btEditImage,btProfile,btEdit,btSave,btChangePassword;
+    private String status;
     private ProgressBar spinner;
 
     Typeface Fonts;
@@ -85,6 +91,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         btProfile = (Button) rootView.findViewById(R.id.btProfile);
         btEdit = (Button) rootView.findViewById(R.id.btEdit);
         btSave = (Button) rootView.findViewById(R.id.btSave);
+        btChangePassword = (Button) rootView.findViewById(R.id.btChangePassword);
         spinner = (ProgressBar) rootView.findViewById(R.id.progressBar);
         spinner.setVisibility(rootView.GONE);
 
@@ -98,9 +105,12 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         btEditImage.setTypeface(Fonts);
         btEdit.setTypeface(Fonts);
         btSave.setTypeface(Fonts);
+        btChangePassword.setTypeface(Fonts);
         txtPageToolBar.setTypeface(Fonts);
 
         btProfile.setOnClickListener(this);
+
+
 
         btEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,10 +170,18 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                             textName.setText(dataSnapshot.child("name").getValue().toString());
                             textPhone.setText(dataSnapshot.child("telephone").getValue().toString());
                             String imageUrl = dataSnapshot.child("image").getValue().toString();
+                            status = dataSnapshot.child("status").getValue().toString();
                             textEmail.setText(user.getEmail());
                             if(!imageUrl.equals("ยังไม่มีรูป") || TextUtils.isEmpty(imageUrl)){
                                 Picasso.with(getActivity()).load(Uri.parse(dataSnapshot.child("image").getValue().toString())).into(imageProfile);
                             }
+
+                            if(status.equals("user")){
+                                btChangePassword.setVisibility(View.VISIBLE);
+                            }else if(status.equals("admin")){
+                                btChangePassword.setVisibility(View.GONE);
+                            }
+
                             spinner.setVisibility(rootView.GONE);
                        }
 
@@ -192,6 +210,70 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 });
             }
         };
+
+        btChangePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(new android.view.ContextThemeWrapper(getActivity(), R.style.Theme_Holo_Dialog_Alert));
+                final EditText edittext = new EditText(getActivity());
+                edittext.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                edittext.setTextColor(Color.WHITE);
+                edittext.setHintTextColor(Color.GRAY);
+                edittext.setHint("รหัสผ่าน");
+                builder.setTitle("เปลี่ยนรหัสผ่าน");
+                builder.setCancelable(false);
+                builder.setIcon(android.R.drawable.ic_dialog_info);
+                builder.setView(edittext);
+
+
+
+
+
+                builder.setPositiveButton("ยกเลิก", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Do nothing
+                        dialog.dismiss();
+                    }
+                });
+
+                builder.setNegativeButton("ตกลง", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        String newPass = edittext.getText().toString();
+                        if(newPass.equals(null)){
+                            Toast.makeText(getActivity(), "กรุกรอกรหัสผ่าน", Toast.LENGTH_SHORT).show();
+                        }else {
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            progressDialog.setMessage("กำลังเปลี่ยนรหัสผ่าน");
+                            progressDialog.show();
+                            if (user != null) {
+                                user.updatePassword(newPass).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(getActivity(), "เปลี่ยนรหัสผ่านสำเร็จ", Toast.LENGTH_SHORT).show();
+                                            progressDialog.dismiss();
+                                            mAuth.signOut();
+                                            getActivity().finish();
+                                            Intent i = new Intent(getActivity(), LoginActivity.class);
+                                            startActivity(i);
+                                        } else {
+                                            Toast.makeText(getActivity(), "เปลี่ยนรหัสผ่านไม่สำเร็จ", Toast.LENGTH_SHORT).show();
+                                            progressDialog.dismiss();
+                                        }
+                                    }
+
+                                });
+                            }
+                        }
+                    }
+                });
+
+                AlertDialog alert = builder.create();
+                alert.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                alert.show();
+
+            }
+        });
         return rootView;
     }
 
@@ -289,10 +371,18 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     }
 
     public void replaceFragment(Fragment someFragment) {
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_bottombar, someFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+        if(status.equals("admin")) {
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.replace(R.id.frame_bottombar, someFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        }else if(status.equals("user")){
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.replace(R.id.frame_user_bottombar, someFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        }
     }
+
 
 }

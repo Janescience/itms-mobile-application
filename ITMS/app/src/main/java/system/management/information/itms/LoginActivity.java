@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private  String status;
 
     private Button login;
-    private TextView mRegister,mLogin;
+    private TextView mLogin;
     Typeface Fonts;
 
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -68,12 +68,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
          mLogin= (TextView) findViewById(R.id.text_login);
          mUsername = (EditText) findViewById(R.id.username);
          mPassword = (EditText) findViewById(R.id.password);
-         mRegister = (TextView) findViewById(R.id.register);
+
 
         login.setTypeface(Fonts);
         mUsername.setTypeface(Fonts);
         mPassword.setTypeface(Fonts);
-        mRegister.setTypeface(Fonts);
         mLogin.setTypeface(Fonts);
 
         progressDialog = new ProgressDialog(this);
@@ -81,13 +80,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         login.setOnClickListener(this);
 
 
-        mRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
         if(firebaseAuth.getCurrentUser() != null){
             //close this activity
@@ -124,13 +117,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         if (task.isSuccessful()) {
                             Toast.makeText(LoginActivity.this, "เข้าสู่ระบบสำเร็จ", Toast.LENGTH_SHORT).show();
                             finish();
-
                                 startActivity(new Intent(getApplicationContext(), CheckLoginActivity.class));
-
-
 
                         }else{
                             Toast.makeText(LoginActivity.this, "ไม่สามารถเข้าสู่ระบบได้ กรุณาลองอีกครั้ง", Toast.LENGTH_SHORT).show();
+                            progressDialog.dismiss();
 
                         }
                     }

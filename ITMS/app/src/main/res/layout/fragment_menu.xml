@@ -16,14 +16,15 @@
         android:layout_height="50dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_above="@+id/btNotify"
+        android:layout_above="@+id/btRegisterUser"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="11dp">
+        android:layout_marginBottom="13dp">
       <TextView
           android:id="@+id/txtNotify"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="การแจ้งเตือน"
+          android:textColor="#000000"
           android:textSize="18dp"
           />
 
@@ -40,12 +41,23 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btRegisterUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="11dp"
+        android:background="#FFFFFF"
+        android:text="เพิ่มผู้ใช้งาน"
+        android:textAlignment="center"
+        android:textSize="18dp"
+        android:layout_above="@+id/btNotify"
+        android:layout_alignParentStart="true" />
+
+    <Button
         android:id="@+id/btNotify"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="11dp"
         android:background="#FFFFFF"
-
         android:text="ทดสอบการแจ้งเตือน"
         android:textAlignment="center"
         android:textSize="18dp"
