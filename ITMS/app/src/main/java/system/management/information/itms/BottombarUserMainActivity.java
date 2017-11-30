@@ -51,6 +51,9 @@ public class BottombarUserMainActivity extends ActionBarActivity {
                 }else if(menuItemId == R.id.Chat){
                     UserFragment fragment = new UserFragment();
                     getSupportFragmentManager().beginTransaction().replace(R.id.frame_user_bottombar, fragment).commit();
+                }else if(menuItemId == R.id.Website) {
+                    WebViewFragment fragment = new WebViewFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_user_bottombar, fragment).commit();
                 }else if(menuItemId == R.id.Menu){
                     MenuFragment fragment = new MenuFragment();
                     getSupportFragmentManager().beginTransaction().replace(R.id.frame_user_bottombar, fragment).commit();
@@ -95,7 +98,7 @@ public class BottombarUserMainActivity extends ActionBarActivity {
         if(id == R.id.action_manual){
 
             ManualFragment fragment = new ManualFragment();
-            getSupportFragmentManager().beginTransaction().replace(R.id.frame_bottombar, fragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_user_bottombar, fragment).commit();
             return true;
 
         }else if(id == R.id.action_back){

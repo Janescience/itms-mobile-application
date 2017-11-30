@@ -35,6 +35,13 @@ public class CheckLoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedIntanceState) {
         super.onCreate(savedIntanceState);
 
+        mAuth = FirebaseAuth.getInstance();
+
+        if(mAuth.getCurrentUser() == null){
+            finish();
+            startActivity(new Intent(this, LoginActivity.class));
+        }
+
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("กำลังเข้าสู่ระบบ...");
         progressDialog.show();

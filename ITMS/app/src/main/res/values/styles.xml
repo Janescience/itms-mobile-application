@@ -17,14 +17,21 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <!-- Used for the buttons -->
-        <item name="colorAccent">#000000</item>
-        <!-- Used for the title and text -->
-        <item name="android:textColorPrimary">#FFFFFF</item>
-        <!-- Used for the background -->
-        <item name="android:background">#0174DF</item>
+
+
+    <style name="Theme_Holo_Dialog_Alert" >
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:background">@drawable/alertdialog</item>
+        <item name="android:windowBackground">@drawable/alertdialog</item>
+        <item name="android:textSize">16dp</item>
+
+
     </style>
+
+
+
+
 
     <style name="spinner_style">
         <item name="android:paddingLeft">0dp</item>
