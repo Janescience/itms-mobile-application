@@ -1,5 +1,5 @@
 # ITMS PROJECT
-Information of Technology Management System - Mobile Application <br> <br>
+Information of Technology Management System - Mobile Application (Android) <br> <br>
 <img src="https://github.com/Janescience/ItmsAndroidProject/blob/master/ITMS/app/src/main/res/drawable/login_mobile.png">
  <br>
 # OPERATIONS
